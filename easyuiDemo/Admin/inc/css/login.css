@@ -1,0 +1,9 @@
+﻿body {font-size:12px;}
+.login{ position:absolute; left:50%; top:50%; margin-left:-200px; margin-top:-150px; width:400px; height:300px;}
+.panel{ padding-bottom:20px;}
+dl{padding-left:14px;}
+dt{float:left;padding:12px 0 4px;width:130px; text-align:right;}
+dd{ text-align:left;height:auto;padding:8px 0; line-height:18px;}
+.text{ border:solid 1px #99BBE8; width:150px; height:20px; line-height:20px; padding-left:2px;}
+.copyright{text-align:center;}
+.err{text-align:center;color:Red;}

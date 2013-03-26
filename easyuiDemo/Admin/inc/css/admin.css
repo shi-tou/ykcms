@@ -1,0 +1,19 @@
+﻿body,html{margin:0px; padding:0px;}
+/*--------index--------*/
+.headL{float:left; height:50px; line-height:50px;}
+.headL h1{ margin:0px; padding:0px; font-size:30px; font-family:黑体; font-weight:bold; color:#0E2D5F;}
+.headR{float:right; height:30px; line-height:30px; margin-top:20px; margin-right:20px;}
+.headR span{ margin-right:10px;}
+.menuUL{ list-style:none; margin:0px; padding:0px;}
+.menuUL li{ height:30px;line-height:30px; color:#0E2D5F;}
+.menuUL a{ color:#000;}
+#login_out{ cursor:pointer;}
+/*----------main---------*/
+.main{ padding:5px;}
+.search{padding:20px 10px;}
+.blank{ height:10px;}
+.action{ padding:10px;}
+.tb{width:148px; height:20px; line-height:20px;border:solid 1px #95B8E7;}
+dl{padding-left:14px;}
+dt{float:left;padding:12px 0 4px;width:130px; text-align:right;}
+dd{ text-align:left;height:auto;padding:8px 0;}
