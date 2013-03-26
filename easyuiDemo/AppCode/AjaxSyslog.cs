@@ -19,6 +19,7 @@ namespace YkCms.AppCode
     /// </summary>
     public class AjaxSyslog
     {
+        AdminInfo adminInfo = Function.GetCookiAdmin();
         SysLog log = new SysLog();
         /// <summary>
         /// 获取日志列表
@@ -28,13 +29,13 @@ namespace YkCms.AppCode
             int pagesize = RequestHelper.GetRequestInt("rows", 10);
             int pageindex = RequestHelper.GetRequestInt("page", 1);
             DataSet ds = new DataSet();
-            if (Function.AdminInfo.AdminID == 1)
+            if (adminInfo.AdminID == 1)
             {
                 ds = PageHelper.GetPageList("SysLog", "*", "SysLogID", pagesize, pageindex, 1, " 1=1 ");
             }
             else
             {
-                ds = PageHelper.GetPageList("SysLog", "*", "SysLogID", pagesize, pageindex, 1, " AdminID=" + Function.AdminInfo.AdminID.ToString()); 
+                ds = PageHelper.GetPageList("SysLog", "*", "SysLogID", pagesize, pageindex, 1, " AdminID=" + adminInfo.AdminID.ToString()); 
             }
             AjaxMsg.msg = "\"rows\":" + JsonHelper.ToJson(ds.Tables[0], "") + ",\"total\":" + ds.Tables[1].Rows[0]["Total"];
         }
@@ -46,7 +47,7 @@ namespace YkCms.AppCode
         {
             string syslogIDs = RequestHelper.GetRequestStr("syslogIDs", "0");
             log.DeleteList(syslogIDs);
-            new SysLog().Add(new SysLogInfo("日志管理", "删除", "删除了编号为【" + syslogIDs + "】的日志信息。", Function.GetIP(), Function.AdminInfo.AdminID, Function.AdminInfo.AdminName, DateTime.Now));
+            new SysLog().Add(new SysLogInfo("日志管理", "删除", "删除了编号为【" + syslogIDs + "】的日志信息。", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
             AjaxMsg.msg = "\"msg\":\"删除成功\"";
         }       
         /// <summary>
@@ -61,9 +62,9 @@ namespace YkCms.AppCode
             string starttime = RequestHelper.GetRequestStr("starttime", "");
             string endtime = RequestHelper.GetRequestStr("endtime", "");
             StringBuilder sbSql = new StringBuilder(" 1=1 ");
-            if (Function.AdminInfo.AdminID != 1)
+            if (adminInfo.AdminID != 1)
             {
-                sbSql.Append(" and AdminID=" + Function.AdminInfo.AdminID);
+                sbSql.Append(" and AdminID=" + adminInfo.AdminID);
             }
             if (key != "")
                 sbSql.AppendFormat(" and Detail like '%{0}%' ", key);          

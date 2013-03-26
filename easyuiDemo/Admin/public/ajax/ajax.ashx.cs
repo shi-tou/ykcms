@@ -107,26 +107,26 @@ namespace YkCms.ajax
                     case "checkSortAttributeName":
                         new AjaxSortAttribute().GetSortAttributeList();
                         break;
-                    ////获取栏目属性列表
-                    //case "GetSortAttributeList":
-                    //    new AjaxSortAttribute().GetSortAttributeList();
-                    //    break;
-                    ////添加栏目属性
-                    //case "AddSortAttributeModel":
-                    //    new AjaxSortAttribute().AddSortAttributeModel();
-                    //    break;
-                    ////获取属性实体
-                    //case "GetSortAttributeModel":
-                    //    new AjaxSortAttribute().GetSortAttributeModel();
-                    //    break;
-                    ////修改栏目属性
-                    //case "UpdateSortAttributeModel":
-                    //    new AjaxSortAttribute().UpdateSortAttributeModel();
-                    //    break;
-                    ////删除栏目属性
-                    //case "DelSortAttributeModel":
-                    //    new AjaxSortAttribute().DeleteSortAttributeModel();
-                    //    break;
+                    //获取栏目属性列表
+                    case "getSortAttributeList":
+                        new AjaxSortAttribute().GetSortAttributeList();
+                        break;
+                    //添加/修改栏目属性
+                    case "addSortAttributeModel":
+                        new AjaxSortAttribute().AddSortAttributeModel();
+                        break;
+                    //获取栏目属性实体
+                    case "getSortAttributeModel":
+                        new AjaxSortAttribute().GetSortAttributeModel();
+                        break;
+                    //删除栏目属性
+                    case "deleteSortAttribute":
+                        new AjaxSortAttribute().DeleteSortAttribute();
+                        break;
+                    //查询栏目属性
+                    case "searchSortAttribute":
+                        new AjaxSortAttribute().SearchSortAttribute();
+                        break;
                     #endregion
 
                     #region 栏目模板管理
@@ -153,10 +153,13 @@ namespace YkCms.ajax
                     #endregion
 
                     #region 栏目管理
-                    ////获取栏目列表
-                    //case "GetSortList":
-                    //    new AjaxSort().GetSortList();
-                    //    break;
+                    case "checkSortName":
+                        new AjaxSort().CheckSortName();
+                        break;
+                    //获取栏目列表
+                    case "getSortList":
+                        new AjaxSort().GetSortList();
+                        break;
                     ////添加栏目
                     //case "AddSortModel":
                     //    new AjaxSort().AddSortModel();
@@ -309,7 +312,6 @@ namespace YkCms.ajax
                         AjaxMsg.ex = "错误的action参数！";
                         AjaxMsg.msgOK = false;
                         break;
-                        
                 }
             }
             catch (Exception ex)

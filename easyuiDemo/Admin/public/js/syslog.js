@@ -43,7 +43,7 @@ function deleteSyslog() {
     var syslogIDs = '';
     var rows = $('#syslogList').datagrid('getSelections'); //getSelections获取多行(注：getSelected可获取单行)
     if (rows.length > 0) {
-        if (!confirm('正在执行删除操作，请确定？')) {
+        if (!confirmBox('操作提示', '正在执行删除操作，请确定？')) {
             return;
         }
         for (var i = 0; i < rows.length; i++) {           
@@ -58,17 +58,17 @@ function deleteSyslog() {
             type: 'POST',
             success: function (data) {
                 if (data.msgOK) {
-                    alert(data.msg);
+                    alertInfo('操作提示', data.msg);
                     getSyslogList();
                 }
                 else {
-                    alert(data.ex);
+                    alertError('错误提示', data.ex);
                 }
             }
         });
     }
     else {
-        alert('请选择要删除的记录！');
+        alertInfo('操作提示', '请选择要删除的记录');
     }
 }
 //查询日志

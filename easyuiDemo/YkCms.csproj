@@ -51,10 +51,12 @@
     <Content Include="Admin\public\js\menu.js" />
     <Content Include="Admin\Login.aspx" />
     <Content Include="Admin\public\js\group.js" />
+    <Content Include="Admin\public\js\msgbox.js" />
+    <Content Include="Admin\public\js\sort.js" />
     <Content Include="Admin\public\js\syslog.js" />
     <Content Include="Admin\public\js\sortattribute.js" />
     <Content Include="Admin\public\Web.config" />
-    <Content Include="Admin\Sort\SortAttribute.aspx" />
+    <Content Include="Admin\Sort\SortAttributeList.aspx" />
     <Content Include="Admin\Sort\SortList.aspx" />
     <Content Include="Admin\Sys\setting.aspx" />
     <Content Include="Admin\User\SysLog.aspx" />
@@ -573,12 +575,12 @@
     <Compile Include="Admin\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Sort\SortAttribute.aspx.cs">
-      <DependentUpon>SortAttribute.aspx</DependentUpon>
+    <Compile Include="Admin\Sort\SortAttributeList.aspx.cs">
+      <DependentUpon>SortAttributeList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Sort\SortAttribute.aspx.designer.cs">
-      <DependentUpon>SortAttribute.aspx</DependentUpon>
+    <Compile Include="Admin\Sort\SortAttributeList.aspx.designer.cs">
+      <DependentUpon>SortAttributeList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Sort\SortList.aspx.cs">
       <DependentUpon>SortList.aspx</DependentUpon>
@@ -666,6 +668,7 @@
     <Compile Include="AppCode\AjaxGroup.cs" />
     <Compile Include="AppCode\AjaxSyslog.cs" />
     <Compile Include="AppCode\AjaxSortAttribute.cs" />
+    <Compile Include="AppCode\AjaxSort.cs" />
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>

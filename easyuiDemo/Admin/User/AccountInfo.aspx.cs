@@ -15,7 +15,7 @@ namespace YkCms.User
         protected void Page_Load(object sender, EventArgs e)
         {
             GroupSelectHtml = new AjaxGroup().GetGroupSelectHtml(true);
-            AdminID = Function.AdminInfo.AdminID;
+            AdminID = Function.GetCookiAdmin().AdminID;
         }
     }
 }

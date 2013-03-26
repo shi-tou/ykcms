@@ -18,6 +18,7 @@ namespace YkCms.AppCode
     /// </summary>
     public class AjaxGroup
     {
+        AdminInfo adminInfo = Function.GetCookiAdmin();
         AdminGroup adminGroup = new AdminGroup();
         SysLog log = new SysLog();
         /// <summary>
@@ -53,18 +54,18 @@ namespace YkCms.AppCode
             ainfo.Describe = describe;
             ainfo.GroupAuth = groupauth;
             ainfo.CreateTime = DateTime.Now;
-            ainfo.AdminID = Function.AdminInfo.AdminID;
+            ainfo.AdminID = adminInfo.AdminID;
             if (groupid == 0)//添加
             {
                 adminGroup.Add(ainfo);
-                log.Add(new SysLogInfo("权限组管理", "添加", "添加名称为【" + groupname + "】的权限组信息", Function.GetIP(), Function.AdminInfo.AdminID, Function.AdminInfo.AdminName, DateTime.Now));
+                log.Add(new SysLogInfo("权限组管理", "添加", "添加名称为【" + groupname + "】的权限组信息", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
                 AjaxMsg.msg = "\"msg\":\"添加成功\"";
             }
             else//修改
             {
                 ainfo.GroupID = groupid;
                 adminGroup.Update(ainfo);
-                log.Add(new SysLogInfo("权限组管理", "修改", "修改编号为【" + groupid + "】的权限组名称为", Function.GetIP(), Function.AdminInfo.AdminID, Function.AdminInfo.AdminName, DateTime.Now));
+                log.Add(new SysLogInfo("权限组管理", "修改", "修改编号为【" + groupid + "】的权限组名称为", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
                 AjaxMsg.msg = "\"msg\":\"修改成功\"";
             }
         }
@@ -83,7 +84,7 @@ namespace YkCms.AppCode
         {
             string groupids = RequestHelper.GetRequestStr("groupids", "0");
             adminGroup.DeleteList(groupids);
-            log.Add(new SysLogInfo("管理员管理", "删除", "删除了编号为【" + groupids + "】的管理员信息", Function.GetIP(), Function.AdminInfo.AdminID, Function.AdminInfo.AdminName, DateTime.Now));
+            log.Add(new SysLogInfo("管理员管理", "删除", "删除了编号为【" + groupids + "】的管理员信息", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
             AjaxMsg.msg = "\"msg\":\"删除成功\"";
         }
         /// <summary>

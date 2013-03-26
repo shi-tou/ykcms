@@ -49,7 +49,7 @@ namespace YK.DAL
             strSql.Append("select count(1) from SortAttribute");
             strSql.Append(" where SortAttributeName=@SortAttributeName and SortAttributeID <> @SortAttributeID");
             SqlParameter[] parameters = {
-					new SqlParameter("@GroupName", SqlDbType.VarChar,50),
+					new SqlParameter("@SortAttributeName", SqlDbType.VarChar,50),
                     new SqlParameter("@SortAttributeID", SqlDbType.Int,4)
             };
             parameters[0].Value = SortAttributeName;
@@ -72,7 +72,7 @@ namespace YK.DAL
 					new SqlParameter("@SortAttributeDesc", SqlDbType.VarChar,100),
 					new SqlParameter("@AdminID", SqlDbType.Int,4),
 					new SqlParameter("@AdminName", SqlDbType.VarChar,50),
-					new SqlParameter("@CreateTime", SqlDbType.Date)};
+					new SqlParameter("@CreateTime", SqlDbType.DateTime)};
 			parameters[0].Value = model.SortAttributeName;
 			parameters[1].Value = model.SortAttributeDesc;
 			parameters[2].Value = model.AdminID;
@@ -99,7 +99,7 @@ namespace YK.DAL
 					new SqlParameter("@SortAttributeDesc", SqlDbType.VarChar,100),
 					new SqlParameter("@AdminID", SqlDbType.Int,4),
 					new SqlParameter("@AdminName", SqlDbType.VarChar,50),
-					new SqlParameter("@CreateTime", SqlDbType.Date),
+					new SqlParameter("@CreateTime", SqlDbType.DateTime),
 					new SqlParameter("@SortAttributeID", SqlDbType.Int,4)};
 			parameters[0].Value = model.SortAttributeName;
 			parameters[1].Value = model.SortAttributeDesc;

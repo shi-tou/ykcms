@@ -1,5 +1,5 @@
 ﻿/*
-管理员、栏目属性操作类
+栏目属性操作类
 */
 $(function () {
 });
@@ -44,13 +44,13 @@ function getSortAttributeList() {
         columns: [[
             {field:'SortAttributeID',width:30,align:'',checkbox:true},
             { field: 'SortAttributeName', title: '栏目属性名称', width: 150, align: 'center' },
-            { field: 'SortAttributeDesc', title: '栏目属性描述', width: 200, align: 'center' },
+            { field: 'SortAttributeDesc', title: '栏目属性描述', width: 300, align: 'center' },
             { field: 'AdminName', title: '添加人', width: 100, align: 'center' },
             { field: 'CreateTime', title: '添加时间', width: 150, align: 'center' }
         ]],
         loadMsg:'正在加载数据，请稍候……',
         rownumbers:true,//显示记录数
-        queryParams: { 'action': 'getSortAttributeList' },//查询参数
+        queryParams: { 'action': 'getSortAttributeList' }, //查询参数
         toolbar: satoolbar
     });
 }
@@ -95,14 +95,9 @@ function getSortAttributeModel() {
             type: 'POST',
             success: function (data) {
                 if (data.msgOK) {
-                    $('#adminsortattribute-sortattributeid').val(data.msg.SortAttributeID);
-                    $('#adminsortattribute-sortattributename').val(data.msg.SortAttributeName);
-                    $('#adminsortattribute-describe').val(data.msg.Describe);
-                    $('#adminsortattribute-sortattributeauth').val(data.msg.SortAttributeAuth);
-                    var p = data.msg.SortAttributeAuth.split(',');
-                    $.each(p, function (index, obj) {
-                        $('#p-' + obj).attr('checked', 'checked');
-                    });
+                    $('#sortattribute-sortattributeid').val(data.msg.SortAttributeID);
+                    $('#sortattribute-sortattributename').val(data.msg.SortAttributeName);
+                    $('#sortattribute-sortattributedesc').val(data.msg.SortAttributeDesc);
                 }
                 else {
                     alert(data.ex);
@@ -158,11 +153,11 @@ function deleteSortAttribute() {
 }
 //查询栏目属性
 function searchSortAttribute() {
-    var sortattributename = $("#search-adminsortattribute-sortattributename").val();
-    var starttime = $("#search-adminsortattribute-starttime").datebox("getValue");
-    var endtime = $("#search-adminsortattribute-endtime").datebox("getValue");
+    var sortattributename = $("#search-sortattribute-sortattributename").val();
+    var starttime = $("#search-sortattribute-starttime").datebox("getValue");
+    var endtime = $("#search-sortattribute-endtime").datebox("getValue");
     $('#sortattributeList').datagrid({
-        url: dealAjaxUrl('public/ajax/ajax.ashx'), //请求地址      
+        url: dealAjaxUrl('public/ajax/ajax.ashx'), //请求地址
         queryParams: { 'action': 'searchSortAttribute', 'sortattributename': sortattributename, 'starttime': starttime, 'endtime': endtime }
     });
 }

@@ -21,7 +21,7 @@ function adminLogin() {
                     location.href = 'index.aspx'
                 }
                 else {
-                    $('#errMsg').html(data.ex);
+                    alertError('错误提示', data.ex);
                 }
             }
         });
@@ -40,7 +40,7 @@ function adminLoginOut() {
                     location.href = 'login.aspx'
                 }
                 else {
-                    alet(data.ex);
+                    alertError('错误提示', data.ex);
                 }
             }
         });
@@ -156,12 +156,12 @@ function addAdminModel() {
             type: 'POST',
             success: function (data) {
                 if (data.msgOK) {
-                    alert(data.msg);
+                    alertInfo('操作提示', data.msg);
                     cancelAdminWin();
                     getAdminList();
                 }
                 else {
-                    alert(data.ex);
+                    alertError('错误提示', data.ex);
                 }
             }
         });
@@ -174,14 +174,14 @@ function deleteAdmin() {
     if (rows.length > 0) {
         for (var i = 0; i < rows.length; i++) {
             if (rows[i].AdminID == 1) {//如果是admin，则不允许修改权限组
-                alert('系统创建的管理员不允许删除！');
+                alertWaring('警告','系统创建的管理员不允许删除！');
                 return;
             }
             if (i != 0)
                 adminIDs += ',';
             adminIDs += rows[i].AdminID;
         }
-        if (!confirm('正在执行删除操作，请确定？')) {
+        if (!confirmBox('操作提示','正在执行删除操作，请确定？')) {
             return;
         }
         $.ajax({
@@ -191,17 +191,17 @@ function deleteAdmin() {
             type: 'POST',
             success: function (data) {
                 if (data.msgOK) {
-                    alert(data.msg);
+                    alertInfo('操作提示', data.msg);
                     getAdminList();
                 }
                 else {
-                    alert(data.ex);
+                    alertError('错误提示', data.ex);
                 }
             }
         });
     }
     else {
-        alert('请选择要删除的记录！');
+        alertInfo('操作提示', '请选择要删除的记录');
     }
 }
 //修改时获取管理员信息
@@ -211,7 +211,7 @@ function getAdminModel() {
     if (rows.length == 1) {
         adminID = rows[0].AdminID;
         if (adminID == 1) {//如果是admin，则不允许修改权限组
-            alert('系统创建的管理员不允许修改！');
+            alertWaring('警告','系统创建的管理员不允许删除！');
             return;
          }
         $.ajax({
@@ -239,17 +239,17 @@ function getAdminModel() {
                     }
                 }
                 else {
-                    alert(data.ex);
+                    alertError('错误提示', data.ex);
                 }
             }
         });
     }
     else if (rows.length == 0) {
-        alert('请选择要修改的记录！');
+        alertInfo('操作提示', '请选择要修改的记录');
         return;
     }
     else {
-        alert('每次只能修改一条记录！');
+        alertInfo('操作提示', '每次只能修改一条记录!');
         return;
     }
     $('#adminWin').window({
@@ -295,7 +295,7 @@ function getLoginAdminModel(adminid) {
                 $('#accountinfo-createtime').val(data.msg.CreateTime);
             }
             else {
-                alert(data.ex);
+                alertError('错误提示', data.ex);
             }
         }
     });
@@ -313,10 +313,10 @@ function modifyAdminModel() {
             type: 'POST',
             success: function (data) {
                 if (data.msgOK) {
-                    alert(data.msg);
+                    alertInfo('操作提示', data.msg);
                 }
                 else {
-                    alert(data.ex);
+                    alertError('错误提示', data.ex);
                 }
             }
         });

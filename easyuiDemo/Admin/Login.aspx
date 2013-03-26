@@ -8,10 +8,11 @@
     <link href="public/css/login.css" rel="stylesheet" type="text/css" />    
     <script src="../jquery-easyui-1.3.2/jquery-1.8.0.min.js" type="text/javascript"></script>
     <script src="../jquery-easyui-1.3.2/jquery.easyui.min.js" type="text/javascript"></script>
+    <script src="public/js/msgbox.js" type="text/javascript"></script>
     <script src="public/js/common.js" type="text/javascript"></script>
     <script src="public/js/admin.js" type="text/javascript"></script>
 </head>
-<body style=" background:#E6EEF8;">
+<body style=" background:#fff;">
     <div class="login">
         <div class="easyui-panel" data-options="iconCls:'icon-tip'" title="管理后台登录">
             <form id="loginForm" method="post">

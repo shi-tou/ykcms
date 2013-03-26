@@ -17,7 +17,8 @@ namespace YkCms.AppCode
     /// 创建人：杨良斌
     /// </summary>
     public class AjaxAdmin
-    {        
+    {
+        AdminInfo adminInfo = Function.GetCookiAdmin();
         Admin admin = new Admin();
         SysLog log = new SysLog();
         /// <summary>
@@ -122,7 +123,7 @@ namespace YkCms.AppCode
             ainfo.GroupID = groupid;
             ainfo.State = state;
             ainfo.AdminDesc = admindesc;
-            ainfo.CreateAdminID = Function.AdminInfo.AdminID;
+            ainfo.CreateAdminID = adminInfo.AdminID;
             ainfo.LastLoginIP = ip;
             ainfo.LastLoginTime = DateTime.Now;
             ainfo.CreateTime = DateTime.Now;
@@ -130,7 +131,7 @@ namespace YkCms.AppCode
             {
                 ainfo.AdminPwd = DESEncrypt.Encrypt(adminpwd);
                 admin.Add(ainfo);
-                new SysLog().Add(new SysLogInfo("管理员管理", "添加", "添加账号为【" + adminaccount + "】的管理员信息", ip, Function.AdminInfo.AdminID, Function.AdminInfo.AdminName, DateTime.Now));
+                new SysLog().Add(new SysLogInfo("管理员管理", "添加", "添加账号为【" + adminaccount + "】的管理员信息", ip, adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
                 AjaxMsg.msg = "\"msg\":\"添加成功\"";
             }
             else
@@ -141,7 +142,7 @@ namespace YkCms.AppCode
                 ainfo.GroupID = groupid;
                 ainfo.State = state;
                 admin.Update(ainfo);
-                log.Add(new SysLogInfo("管理员管理", "修改", "修改管理帐号为【" + adminaccount + "】的管理员信息", ip, Function.AdminInfo.AdminID, Function.AdminInfo.AdminName, DateTime.Now));
+                log.Add(new SysLogInfo("管理员管理", "修改", "修改管理帐号为【" + adminaccount + "】的管理员信息", ip, adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
                 AjaxMsg.msg = "\"msg\":\"修改成功\"";
             }
         }
@@ -171,7 +172,7 @@ namespace YkCms.AppCode
         {
             string adminids = RequestHelper.GetRequestStr("adminids", "0");
             admin.DeleteList(adminids);
-            new SysLog().Add(new SysLogInfo("管理员管理", "删除", "删除了编号为【" + adminids + "】的管理员信息。", Function.GetIP(), Function.AdminInfo.AdminID, Function.AdminInfo.AdminName, DateTime.Now));
+            new SysLog().Add(new SysLogInfo("管理员管理", "删除", "删除了编号为【" + adminids + "】的管理员信息。", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
             AjaxMsg.msg = "\"msg\":\"删除成功\"";
         }       
         /// <summary>
@@ -218,7 +219,7 @@ namespace YkCms.AppCode
             {
                 ainfo.AdminName = adminname;
                 admin.Update(ainfo);
-                new SysLog().Add(new SysLogInfo("修改帐号信息", "修改", "添加账号为【" + ainfo.AdminAccount + "】的管理员信息", Function.GetIP(), Function.AdminInfo.AdminID, Function.AdminInfo.AdminName, DateTime.Now));
+                new SysLog().Add(new SysLogInfo("修改帐号信息", "修改", "添加账号为【" + ainfo.AdminAccount + "】的管理员信息", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
                 AjaxMsg.msg = "\"msg\":\"修改成功！\"";
             }
             else

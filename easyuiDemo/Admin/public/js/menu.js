@@ -75,11 +75,11 @@ function add(type) {
             addTab(title, "User/MemberSetting.aspx", true)
             break;
         //***********栏目管理************* 
-        case "SortAttribute":
+        case "SortAttributeList":
             title = "网站栏目属性";
             if (isTabExist(title))
                 return;
-            addTab(title, "Sort/SortAttribute.aspx", true)
+            addTab(title, "Sort/SortAttributeList.aspx", true)
             break;
         case "SortList":
             title = "网站栏目管理";
@@ -209,6 +209,9 @@ function add(type) {
             if (isTabExist(title))
                 return;
             addTab(title, "Seo/InfoRelease.aspx", true)
+            break;
+        default:
+            alertInfo('温馨提示', '页面建设中……');
             break;
     }
 }

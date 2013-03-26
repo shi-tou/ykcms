@@ -9,22 +9,7 @@ using System.Text;
 namespace YkCms.AppCode
 {
     public static class Function
-    {
-        public static AdminInfo _adminInfo;
-        /// <summary>
-        /// 全局静态变量
-        /// </summary>
-        public static AdminInfo AdminInfo
-        {
-            get
-            {
-                if (_adminInfo != null)
-                {
-                    _adminInfo = GetCookiAdmin();
-                }
-                return _adminInfo;
-            }
-        }
+    {       
         #region 读取和保存Cookie中的登陆信息
         /// <summary>
         /// 将当前登陆对象序列化为XML字符串
@@ -42,7 +27,7 @@ namespace YkCms.AppCode
         /// </summary>
         public static AdminInfo GetCookiAdmin()
         {
-            string masterStr = HttpContext.Current.Session["AdminInfo"] != null ? HttpContext.Current.Session["AdminAccount"].ToString() : "";
+            string masterStr = HttpContext.Current.Session["AdminInfo"] != null ? HttpContext.Current.Session["AdminInfo"].ToString() : "";
             if (masterStr == "")
             {
                 if ((HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName] != null) && (HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName].Value != ""))

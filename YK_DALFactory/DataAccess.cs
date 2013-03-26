@@ -69,5 +69,14 @@ namespace YK.DALFactory
             object objType = CreateObject(AssemblyPath, ClassNamespace);
             return (YK.IDAL.ISortAttribute)objType;
         }
+        /// <summary>
+        /// 创建SortAttribute数据层接口。
+        /// </summary>
+        public static YK.IDAL.ISort CreateSort()
+        {
+            string ClassNamespace = AssemblyPath + ".Sort";
+            object objType = CreateObject(AssemblyPath, ClassNamespace);
+            return (YK.IDAL.ISort)objType;
+        }
     }
 }

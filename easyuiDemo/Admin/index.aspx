@@ -8,6 +8,7 @@
     <link href="public/css/admin.css" rel="stylesheet" type="text/css" />
     <script src="../jquery-easyui-1.3.2/jquery-1.8.0.min.js" type="text/javascript"></script>
     <script src="../jquery-easyui-1.3.2/jquery.easyui.min.js" type="text/javascript"></script>
+    <script src="public/js/msgbox.js" type="text/javascript"></script>
     <script src="public/js/common.js" type="text/javascript"></script>
     <script src="public/js/menu.js" type="text/javascript"></script>
     <script src="public/js/admin.js" type="text/javascript"></script>
@@ -33,7 +34,7 @@
                         <li><a href="javascript:add('SysLog')">操作日志</a></li>                        
                     </ul>
                 </div>
-                <div title="用户管理" data-options="selected:true" style="padding:10px 10px 10px 20px;">
+                <div title="用户管理" style="padding:10px 10px 10px 20px;">
                     <ul class="menuUL">
                         <li><a href="javascript:add('AdminGroup')">管理权限组</a></li>
                         <li><a href="javascript:add('AdminList')">管理员列表</a></li>
@@ -43,9 +44,9 @@
                         <li><a href="javascript:add('MemberSetting')">会员功能配置</a></li>
                     </ul>
                 </div>
-                <div title="栏目管理" style="padding:10px 10px 10px 20px;">
+                <div title="栏目管理" data-options="selected:true" style="padding:10px 10px 10px 20px;">
                     <ul class="menuUL">
-                        <li><a href="javascript:add('SortAttribute')">网站栏目属性</a></li>
+                        <li><a href="javascript:add('SortAttributeList')">网站栏目属性</a></li>
                         <li><a href="javascript:add('SortList')">网站栏目管理</a></li>
                         <li><a href="javascript:add('SortStaticPage')">栏目静态生成</a></li>
                     </ul>

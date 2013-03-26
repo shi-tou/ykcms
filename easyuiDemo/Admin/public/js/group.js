@@ -75,12 +75,12 @@ function addGroupModel() {
             type: 'POST',
             success: function (data) {
                 if (data.msgOK) {
-                    alert(data.msg);
+                    alertInfo('操作提示', data.msg);
                     cancelGroupWin();
                     getGroupList();
                 }
                 else {
-                    alert(data.ex);
+                    alertError('错误提示', data.ex);
                 }
             }
         });
@@ -109,17 +109,17 @@ function getGroupModel() {
                     });
                 }
                 else {
-                    alert(data.ex);
+                    alertError('错误提示', data.ex);
                 }
             }
         });
     }
     else if (rows.length == 0) {
-        alert('请选择要修改的记录！');
+        alertInfo('操作提示', '请选择要修改的记录');
         return;
     }
     else {
-        alert('每次只能修改一条记录！');
+        alertInfo('操作提示', '每次只能修改一条记录!');
         return;
     }
     $('#groupWin').window({
@@ -132,7 +132,7 @@ function deleteGroup() {
     var groupIDs = '';
     var rows = $('#groupList').datagrid('getSelections'); //getSelections获取多行(注：getSelected可获取单行)
     if (rows.length > 0) {
-        if (!confirm("正在执行删除操作，请确定？")) {
+        if (!confirmBox('操作提示', '正在执行删除操作，请确定？')) {
             return;
         }
         for (var i = 0; i < rows.length; i++) {
@@ -147,17 +147,17 @@ function deleteGroup() {
             type: 'POST',
             success: function (data) {
                 if (data.msgOK) {
-                    alert(data.msg);
+                    alertInfo('操作提示', data.msg);
                     getGroupList();
                 }
                 else {
-                    alert(data.ex);
+                    alertError('错误提示', data.ex);
                 }
             }
         });
     }
     else {
-        alert('请选择要删除的记录！');
+        alertInfo('操作提示', '请选择要删除的记录');
     }
 }
 //查询权限组

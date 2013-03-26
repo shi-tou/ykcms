@@ -18,16 +18,17 @@ namespace YkCms.AppCode
     /// </summary>
     public class AjaxSortAttribute
     {
+        AdminInfo adminInfo = Function.GetCookiAdmin();
         SortAttribute sortAttribute = new SortAttribute();
         SysLog log = new SysLog();
         /// <summary>
         /// 验证栏目属性名称
         /// </summary>
-        public void CheckGroupName()
+        public void CheckSortAttributeName()
         {
-            int groupid = RequestHelper.GetRequestInt("sortattributename", 0);
-            string groupname = RequestHelper.GetRequestStr("sortattributeid", "");
-            if (sortAttribute.Exists(groupname, groupid))
+            int sortattributeid = RequestHelper.GetRequestInt("sortattributeid", 0);
+            string sortattributename = RequestHelper.GetRequestStr("sortattributename", "");
+            if (sortAttribute.Exists(sortattributename, sortattributeid))
             {
                 AjaxMsg.msgOK = false;
                 AjaxMsg.msg = "";
@@ -41,34 +42,34 @@ namespace YkCms.AppCode
         /// <summary>
         /// 添加/修改栏目属性
         /// </summary>
-        public void AddGroupModel()
+        public void AddSortAttributeModel()
         {
             int sortattributeid = RequestHelper.GetRequestInt("sortattribute-sortattributeid", 0);
             string sortattributename = RequestHelper.GetRequestStr("sortattribute-sortattributename", "");
             string sortattributedesc = RequestHelper.GetRequestStr("sortattribute-sortattributedesc", "");
 
-            SortAttributeInfo ainfo = new SortAttributeInfo();
-            ainfo.SortAttributeName = sortattributename;
-            ainfo.SortAttributeDesc = sortattributedesc;            
-            ainfo.AdminID = Function.AdminInfo.AdminID;
-            ainfo.AdminName = Function.AdminInfo.AdminName;
-            ainfo.CreateTime = DateTime.Now;
+            SortAttributeInfo sinfo = new SortAttributeInfo();
+            sinfo.SortAttributeName = sortattributename;
+            sinfo.SortAttributeDesc = sortattributedesc;
+            sinfo.AdminID = adminInfo.AdminID;
+            sinfo.AdminName = adminInfo.AdminName;
+            sinfo.CreateTime = DateTime.Now;
             if (sortattributeid == 0)//添加
             {
-                sortAttribute.Add(ainfo);
-                log.Add(new SysLogInfo("栏目属性管理", "添加", "添加名称为【" + sortattributename + "】的栏目属性信息", Function.GetIP(), Function.AdminInfo.AdminID, Function.AdminInfo.AdminName, DateTime.Now));
+                sortAttribute.Add(sinfo);
+                log.Add(new SysLogInfo("栏目属性管理", "添加", "添加名称为【" + sortattributename + "】的栏目属性信息", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
                 AjaxMsg.msg = "\"msg\":\"添加成功\"";
             }
             else//修改
             {
-                ainfo.SortAttributeID = sortattributeid;
-                sortAttribute.Update(ainfo);
-                log.Add(new SysLogInfo("栏目属性管理", "修改", "修改编号为【" + sortattributeid + "】的栏目属性名称为", Function.GetIP(), Function.AdminInfo.AdminID, Function.AdminInfo.AdminName, DateTime.Now));
+                sinfo.SortAttributeID = sortattributeid;
+                sortAttribute.Update(sinfo);
+                log.Add(new SysLogInfo("栏目属性管理", "修改", "修改编号为【" + sortattributeid + "】的栏目属性名称为", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
                 AjaxMsg.msg = "\"msg\":\"修改成功\"";
             }
         }
         /// <summary>
-        /// 获取权限组列表
+        /// 获取栏目属性列表
         /// </summary>
         public void GetSortAttributeList()
         {
@@ -76,27 +77,27 @@ namespace YkCms.AppCode
             AjaxMsg.msg = "\"rows\":" + JsonHelper.ToJson(ds.Tables[0], "") + ",\"total\":" + ds.Tables[0].Rows.Count;
         }
         /// <summary>
-        /// 删除权限组
+        /// 删除栏目属性
         /// </summary>
         public void DeleteSortAttribute()
         {
             string sortattributeids = RequestHelper.GetRequestStr("sortattributeids", "0");
             sortAttribute.DeleteList(sortattributeids);
-            log.Add(new SysLogInfo("栏目属性管理", "删除", "删除了编号为【" + sortattributeids + "】的栏目属性信息", Function.GetIP(), Function.AdminInfo.AdminID, Function.AdminInfo.AdminName, DateTime.Now));
+            log.Add(new SysLogInfo("栏目属性管理", "删除", "删除了编号为【" + sortattributeids + "】的栏目属性信息", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
             AjaxMsg.msg = "\"msg\":\"删除成功\"";
         }
         /// <summary>
-        /// 获取权限组
+        /// 获取栏目属性
         /// </summary>
-        public void GetGroupModel()
+        public void GetSortAttributeModel()
         {
             int sortattributeid = RequestHelper.GetRequestInt("sortattributeid", 0);
-            SortAttributeInfo ainfo = sortAttribute.GetModelByCache(sortattributeid);
-            //AjaxMsg.msg = "\"msg\":{\"GroupID\":" + ainfo.GroupID + ",\"GroupName\":\"" + ainfo.GroupName + "\",\"GroupAuth\":\"" + ainfo.GroupAuth + "\",\"Describe\":\"" +
-            //    ainfo.Describe + "\"}";
+            SortAttributeInfo sinfo = sortAttribute.GetModelByCache(sortattributeid);
+            AjaxMsg.msg = "\"msg\":{\"SortAttributeID\":" + sinfo.SortAttributeID + ",\"SortAttributeName\":\"" + sinfo.SortAttributeName + "\",\"SortAttributeDesc\":\"" + sinfo.SortAttributeDesc + "\",\"AdminName\":\"" +
+                sinfo.AdminName + "\",\"CreateTime\":\"" + sinfo.CreateTime + "\"}";
         }
         /// <summary>
-        /// 查询权限组
+        /// 查询栏目属性
         /// </summary>
         /// <param name="adminid"></param>
         public void SearchSortAttribute()
@@ -115,7 +116,7 @@ namespace YkCms.AppCode
             AjaxMsg.msg = "\"rows\":" + JsonHelper.ToJson(ds.Tables[0], "") + ",\"total\":" + ds.Tables[0].Rows.Count;
         }
         /// <summary>
-        /// 获取权限组信息，并返回select的HTML
+        /// 获取栏目属性信息，并返回select的HTML
         /// </summary>
         public string GetSortAttributeSelectHtml(bool flag)
         {

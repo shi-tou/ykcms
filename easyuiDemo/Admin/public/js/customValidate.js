@@ -48,7 +48,14 @@ $.extend($.fn.validatebox.defaults.rules, {
         validator: function (value, param) {
             return value == $(param[0]).val();
         },
-        message: '两次输入的字符不一至'
+        message: '两次输入的字符不一致'
+    },
+    checkSelect: {
+        validator: function (value, param) {
+            alert(value);
+            return value != 0;
+        },
+        message: '请选择列表中的值'
     },
     number: {
         validator: function (value, param) {
@@ -77,6 +84,12 @@ $.extend($.fn.validatebox.defaults.rules, {
     checkSortAttributeName: {
         validator: function (value, param) {
             return checkSortAttributeName(value);
+        },
+        message: '该名称已存在'
+    },
+    checkSortName: {
+        validator: function (value, param) {
+            return checkSortName(value);
         },
         message: '该名称已存在'
     }
@@ -165,6 +178,21 @@ var checkSortAttributeName = function (value) {
     $.ajax({
         url: dealAjaxUrl('ajax/ajax.ashx'),
         data: { 'action': 'checkSortAttributeName', 'sortattributename': value, 'sortattributeid': $('#sortattribute-sortattributeid').val() },
+        dataType: 'json',
+        type: 'POST',
+        async: false,
+        success: function (data) {
+            flag = data.msgOK;
+        }
+    });
+    return flag;
+}
+//验证栏目名称
+var checkSortName = function (value) {
+    var flag = false;
+    $.ajax({
+        url: dealAjaxUrl('ajax/ajax.ashx'),
+        data: { 'action': 'checkSortName', 'sortname': value, 'sortid': $('#sortlist-sortid').val() },
         dataType: 'json',
         type: 'POST',
         async: false,
