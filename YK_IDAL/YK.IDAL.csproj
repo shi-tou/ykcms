@@ -41,6 +41,7 @@
     <Compile Include="ISort.cs" />
     <Compile Include="ISortAttribute.cs" />
     <Compile Include="ISysLog.cs" />
+    <Compile Include="ITemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

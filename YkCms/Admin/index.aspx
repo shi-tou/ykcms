@@ -47,6 +47,7 @@
                 <div title="栏目管理" data-options="selected:true" style="padding:10px 10px 10px 20px;">
                     <ul class="menuUL">
                         <li><a href="javascript:add('SortAttributeList')">网站栏目属性</a></li>
+                        <li><a href="javascript:add('TemplateList')">网站栏目模板</a></li>
                         <li><a href="javascript:add('SortList')">网站栏目管理</a></li>
                         <li><a href="javascript:add('SortStaticPage')">栏目静态生成</a></li>
                     </ul>
@@ -88,6 +89,7 @@
 	    <div data-options="region:'center',title:'欢迎登录云客网站后台',iconCls:'icon-tip'">
             <div id="nav_tabs" class="easyui-tabs" data-options="border:false">
 		        <div title="首页" style="padding:10px">
+                    <CKEditor:CKEditorControl ID="CKEditorControl1" runat="server"></CKEditor:CKEditorControl>
 		        </div>
 		        <div title="新闻管理" data-options="closable:true" style="padding:10px">
 		        </div>

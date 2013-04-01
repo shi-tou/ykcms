@@ -125,16 +125,16 @@ function showBottomRight(title, msg, showType) {
     });
 }
 //确定对话框
-function confirmBox(title,msg) {
+function confirmBox(title, msg, callBackFun) {
     $.messager.confirm(title, msg, function (r) {
         if (r) {
-            return r;
+            callBackFun();
         }
     });
 }
 //输入框
 function promptBox(title, msg) {
-    $.messager.prompt(msg, msg, function (r) {
+    $.messager.prompt(title, msg, function (r) {
         if (r) {
             return r;
         }

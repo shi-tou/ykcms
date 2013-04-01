@@ -14,7 +14,7 @@ var admintoolbar = [{
 function getSyslogList(pagesize,pageindex) {
     $('#syslogList').datagrid({
         title: '操作日志列表',
-        url: dealAjaxUrl('public/ajax/ajax.ashx'), //请求地址
+        url: dealAjaxUrl('../public/ajax/ajax.ashx'), //请求地址
         columns: [[
             { field: 'SysLogID', width: 30, align: 'center', checkbox: true },
             { field: 'Area', title: '操作区域', width: 100 },
@@ -33,7 +33,7 @@ function getSyslogList(pagesize,pageindex) {
     var p = $('#syslogList').datagrid('getPager');
     setPager(p, function () {
         $('#syslogList').datagrid({
-            url: dealAjaxUrl('public/ajax/ajax.ashx'), //请求地址
+            url: dealAjaxUrl('../public/ajax/ajax.ashx'), //请求地址
             queryParams: { 'action': 'getSyslogList'} //查询参数,easyui插件会加上默认参数page（当前页）rows（每页记录数）
         });
     });
@@ -52,7 +52,7 @@ function deleteSyslog() {
             syslogIDs += rows[i].SysLogID;
         }
         $.ajax({
-            url: dealAjaxUrl('public/ajax/ajax.ashx'),
+            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: { 'action': 'deleteSyslog', 'syslogIDs': syslogIDs },
             dataType: 'json',
             type: 'POST',
@@ -77,7 +77,7 @@ function searchSyslog() {
     var starttime = $('#search-syslog-starttime').datebox('getValue');
     var endtime = $('#search-syslog-endtime').datebox('getValue');
     $('#syslogList').datagrid({
-        url: dealAjaxUrl('public/ajax/ajax.ashx'), //请求地址      
+        url: dealAjaxUrl('../public/ajax/ajax.ashx'), //请求地址      
         queryParams: { 'action': 'searchSyslog', 'key': key, 'starttime': starttime, 'endtime': endtime }
     });
 }

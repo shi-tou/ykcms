@@ -130,10 +130,10 @@ namespace YkCms.ajax
                     #endregion
 
                     #region 栏目模板管理
-                    ////获取栏目模板列表
-                    //case "GetSortTemplateList":
-                    //    new AjaxSortTemplate().GetSortTemplateList();
-                    //    break;
+                    //获取栏目模板列表
+                    case "getTemplateList":
+                        new AjaxTemplate().GetTemplateList();
+                        break;
                     ////添加栏目模板
                     //case "AddSortTemplateModel":
                     //    new AjaxSortTemplate().AddSortTemplateModel();

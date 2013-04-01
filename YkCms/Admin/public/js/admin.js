@@ -31,7 +31,7 @@ function adminLogin() {
 function adminLoginOut() {
     if (confirm("正在退出系统，请确定？")) {
         $.ajax({
-            url: dealAjaxUrl('public/ajax/ajax.ashx'),
+            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: { 'action': 'loginOut' },
             dataType: 'json',
             type: 'POST',
@@ -83,7 +83,7 @@ function cancelAdminWin() {
 function getAdminList() {
     $('#adminList').datagrid({
         title: '管理员列表',
-        url: dealAjaxUrl('public/ajax/ajax.ashx'), //请求地址
+        url: dealAjaxUrl('../public/ajax/ajax.ashx'), //请求地址
         columns: [[
             { field: 'AdminID', width: 30, align: 'center', checkbox: true,editor:isAdmin },
             { field: 'AdminAccount',title: '管理帐号', width: 100, align: 'center'},
@@ -150,7 +150,7 @@ function addAdminModel() {
     var data;
     if ($('#adminForm').form('validate')) {
         $.ajax({
-            url: dealAjaxUrl('public/ajax/ajax.ashx'),
+            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: 'action=addAdminModel&' + $('#adminForm').serialize(),
             dataType: 'json',
             type: 'POST',
@@ -185,7 +185,7 @@ function deleteAdmin() {
             return;
         }
         $.ajax({
-            url: dealAjaxUrl('public/ajax/ajax.ashx'),
+            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: { 'action': 'deleteAdmin', 'adminids': adminIDs },
             dataType: 'json',
             type: 'POST',
@@ -215,7 +215,7 @@ function getAdminModel() {
             return;
          }
         $.ajax({
-            url: dealAjaxUrl('public/ajax/ajax.ashx'),
+            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: { 'action': 'getAdminModel', 'adminid': adminID },
             dataType: 'json',
             type: 'POST',
@@ -264,14 +264,14 @@ function searchAdmin() {
     var starttime = $('#search-adminlist-starttime').datebox('getValue');
     var endtime = $('#search-adminlist-endtime').datebox('getValue');
     $('#adminList').datagrid({
-        url: dealAjaxUrl('public/ajax/ajax.ashx'), //请求地址      
+        url: dealAjaxUrl('../public/ajax/ajax.ashx'), //请求地址      
         queryParams: { 'action': 'searchAdmin', 'adminname': adminname, 'groupid': groupid, 'starttime': starttime, 'endtime': endtime }
     });
 }
 //获取当前登录管理员信息
 function getLoginAdminModel(adminid) {
     $.ajax({
-        url: dealAjaxUrl('public/ajax/ajax.ashx'),
+        url: dealAjaxUrl('../public/ajax/ajax.ashx'),
         data: { 'action': 'getAdminModel', 'adminid': adminid },
         dataType: 'json',
         type: 'POST',
@@ -307,7 +307,7 @@ function modifyAdminModel() {
     var adminname = $('#accountinfo-adminname').val();
     if ($('#adminForm').form('validate')) {
         $.ajax({
-            url: dealAjaxUrl('public/ajax/ajax.ashx'),
+            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: { 'action': 'modifyAdminModel', 'adminid': adminid, 'adminname': adminname },
             dataType: 'json',
             type: 'POST',

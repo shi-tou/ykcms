@@ -40,7 +40,7 @@ function cancelSortWin() {
 function getSortList() {
     $('#sortList').datagrid({
         title: '栏目列表',
-        url: dealAjaxUrl('public/ajax/ajax.ashx'), //请求地址
+        url: dealAjaxUrl('../public/ajax/ajax.ashx'), //请求地址
         columns: [[
             { field: 'SortID', width: 30, align: '', checkbox: true },
             { field: 'SortName', title: '栏目名称', width: 150, align: 'center' },
@@ -66,7 +66,7 @@ function addSortModel() {
     var data;
     if ($('#sortForm').form('validate')) {
         $.ajax({
-            url: dealAjaxUrl('public/ajax/ajax.ashx'),
+            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: 'action=addSortModel&' + $('#sortForm').serialize(),
             dataType: 'json',
             type: 'POST',
@@ -90,7 +90,7 @@ function getSortModel() {
     if (rows.length == 1) {
         sortID = rows[0].SortID;
         $.ajax({
-            url: dealAjaxUrl('public/ajax/ajax.ashx'),
+            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: { 'action': 'getSortModel', 'sortid': sortID },
             dataType: 'json',
             type: 'POST',
@@ -133,7 +133,7 @@ function deleteSort() {
             sortIDs += rows[i].SortID;
         }
         $.ajax({
-            url: dealAjaxUrl('public/ajax/ajax.ashx'),
+            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: { 'action': 'deleteSort', 'sortids': sortIDs },
             dataType: 'json',
             type: 'POST',
@@ -158,7 +158,7 @@ function searchSort() {
     var starttime = $("#search-sort-starttime").datebox("getValue");
     var endtime = $("#search-sort-endtime").datebox("getValue");
     $('#sortList').datagrid({
-        url: dealAjaxUrl('public/ajax/ajax.ashx'), //请求地址
+        url: dealAjaxUrl('../public/ajax/ajax.ashx'), //请求地址
         queryParams: { 'action': 'searchSort', 'sortname': sortname, 'starttime': starttime, 'endtime': endtime }
     });
 }

@@ -81,6 +81,12 @@ function add(type) {
                 return;
             addTab(title, "Sort/SortAttributeList.aspx", true)
             break;
+        case "TemplateList":
+            title = "网站栏目模板";
+            if (isTabExist(title))
+                return;
+            addTab(title, "Sort/TemplateList.aspx", true)
+            break;
         case "SortList":
             title = "网站栏目管理";
             if (isTabExist(title))
@@ -88,7 +94,7 @@ function add(type) {
             addTab(title, "Sort/SortList.aspx", true)
             break;
         case "SortStaticPage":
-            title = "栏目静态生成";
+            title = "栏目静态生成"; 
             if (isTabExist(title))
                 return;
             addTab(title, "Sort/SortStaticPage.aspx", true)
@@ -220,7 +226,7 @@ function addTab(title,url,closable) {
     $('#nav_tabs').tabs('add', {
         title: title,
         closable: closable,
-        href:url
+        content: "<iframe scrolling=\"no\" frameborder=\"0\" src=\"" + url + "\" style=\"width:100%;\" onload=\"Javascript:SetWinHeight(this);\"></iframe>"
     });
 }
 //选项卡是否存在，存在则选中并返回true,不存在则

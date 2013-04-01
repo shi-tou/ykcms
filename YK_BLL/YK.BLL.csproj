@@ -42,6 +42,7 @@
     <Compile Include="Sort.cs" />
     <Compile Include="SortAttribute.cs" />
     <Compile Include="SysLog.cs" />
+    <Compile Include="Template.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\YK_Common\YK.Common.csproj">

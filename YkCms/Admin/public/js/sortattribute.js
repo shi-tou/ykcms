@@ -40,7 +40,7 @@ function cancelSortAttributeWin() {
 function getSortAttributeList() {
     $('#sortattributeList').datagrid({
         title:'栏目属性列表',
-        url: dealAjaxUrl('public/ajax/ajax.ashx'),//请求地址
+        url: dealAjaxUrl('../public/ajax/ajax.ashx'),//请求地址
         columns: [[
             {field:'SortAttributeID',width:30,align:'',checkbox:true},
             { field: 'SortAttributeName', title: '栏目属性名称', width: 150, align: 'center' },
@@ -65,7 +65,7 @@ function addSortAttributeModel() {
     var data;
     if ($('#sortattributeForm').form('validate')) {
         $.ajax({
-            url: dealAjaxUrl('public/ajax/ajax.ashx'),
+            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: 'action=addSortAttributeModel&' + $('#sortattributeForm').serialize(),
             dataType: 'json',
             type: 'POST',
@@ -89,7 +89,7 @@ function getSortAttributeModel() {
     if (rows.length == 1) {
         sortattributeID = rows[0].SortAttributeID;
         $.ajax({
-            url: dealAjaxUrl('public/ajax/ajax.ashx'),
+            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: { 'action': 'getSortAttributeModel', 'sortattributeid': sortattributeID },
             dataType: 'json',
             type: 'POST',
@@ -132,7 +132,7 @@ function deleteSortAttribute() {
             sortattributeIDs += rows[i].SortAttributeID;
         }
         $.ajax({
-            url: dealAjaxUrl('public/ajax/ajax.ashx'),
+            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: { 'action': 'deleteSortAttribute', 'sortattributeids': sortattributeIDs },
             dataType: 'json',
             type: 'POST',
@@ -157,7 +157,7 @@ function searchSortAttribute() {
     var starttime = $("#search-sortattribute-starttime").datebox("getValue");
     var endtime = $("#search-sortattribute-endtime").datebox("getValue");
     $('#sortattributeList').datagrid({
-        url: dealAjaxUrl('public/ajax/ajax.ashx'), //请求地址
+        url: dealAjaxUrl('../public/ajax/ajax.ashx'), //请求地址
         queryParams: { 'action': 'searchSortAttribute', 'sortattributename': sortattributename, 'starttime': starttime, 'endtime': endtime }
     });
 }

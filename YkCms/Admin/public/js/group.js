@@ -11,9 +11,14 @@ var toolbar = [{
         $('#groupWin').window({
             title: '添加权限组',
             closed: false,
+            width: 820,
+            height: 450,
+            top: 500,
+            left: 450,
             onClose: function () {
                 clearGroupForm();
             }
+            
         });
     }
 }, {
@@ -40,7 +45,7 @@ function cancelGroupWin() {
 function getGroupList() {
     $('#groupList').datagrid({
         title:'权限组列表',
-        url: dealAjaxUrl('public/ajax/ajax.ashx'),//请求地址
+        url: dealAjaxUrl('../public/ajax/ajax.ashx'),//请求地址
         columns: [[
             {field:'GroupID',width:30,align:'',checkbox:true},
             { field: 'GroupName', title: '权限组名称', width: 150, align: 'center' },
@@ -69,7 +74,7 @@ function addGroupModel() {
     var data;
     if ($('#groupForm').form('validate')) {
         $.ajax({
-            url: dealAjaxUrl('public/ajax/ajax.ashx'),
+            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: 'action=addGroupModel&' + $('#groupForm').serialize(),
             dataType: 'json',
             type: 'POST',
@@ -132,28 +137,28 @@ function deleteGroup() {
     var groupIDs = '';
     var rows = $('#groupList').datagrid('getSelections'); //getSelections获取多行(注：getSelected可获取单行)
     if (rows.length > 0) {
-        if (!confirmBox('操作提示', '正在执行删除操作，请确定？')) {
-            return;
-        }
         for (var i = 0; i < rows.length; i++) {
             if (i != 0)
                 groupIDs += ',';
             groupIDs += rows[i].GroupID;
         }
-        $.ajax({
-            url: dealAjaxUrl('public/ajax/ajax.ashx'),
-            data: { 'action': 'deleteGroup', 'groupids': groupIDs },
-            dataType: 'json',
-            type: 'POST',
-            success: function (data) {
-                if (data.msgOK) {
-                    alertInfo('操作提示', data.msg);
-                    getGroupList();
+        confirmBox('操作提示', '正在执行删除操作，请确定？', function () {
+            
+            $.ajax({
+                url: dealAjaxUrl('../public/ajax/ajax.ashx'),
+                data: { 'action': 'deleteGroup', 'groupids': groupIDs },
+                dataType: 'json',
+                type: 'POST',
+                success: function (data) {
+                    if (data.msgOK) {
+                        alertInfo('操作提示', data.msg);
+                        getGroupList();
+                    }
+                    else {
+                        alertError('错误提示', data.ex);
+                    }
                 }
-                else {
-                    alertError('错误提示', data.ex);
-                }
-            }
+            });
         });
     }
     else {
@@ -166,7 +171,7 @@ function searchGroup() {
     var starttime = $("#search-admingroup-starttime").datebox("getValue");
     var endtime = $("#search-admingroup-endtime").datebox("getValue");
     $('#groupList').datagrid({
-        url: dealAjaxUrl('public/ajax/ajax.ashx'), //请求地址      
+        url: dealAjaxUrl('../public/ajax/ajax.ashx'), //请求地址      
         queryParams: { 'action': 'searchGroup', 'groupname': groupname, 'starttime': starttime, 'endtime': endtime }
     });
 }

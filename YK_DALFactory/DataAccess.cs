@@ -78,5 +78,12 @@ namespace YK.DALFactory
             object objType = CreateObject(AssemblyPath, ClassNamespace);
             return (YK.IDAL.ISort)objType;
         }
+
+        public static YK.IDAL.ITemplate CreateTemplate()
+        {
+            string ClassNamespace = AssemblyPath + ".Template";
+            object objType = CreateObject(AssemblyPath, ClassNamespace);
+            return (YK.IDAL.ITemplate)objType;
+        }
     }
 }
