@@ -98,7 +98,7 @@ function getGroupModel() {
     if (rows.length == 1) {
         groupID = rows[0].GroupID;
         $.ajax({
-            url: dealAjaxUrl('public/ajax/ajax.ashx'),
+            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: { 'action': 'getGroupModel', 'groupid': groupID },
             dataType: 'json',
             type: 'POST',
@@ -142,23 +142,24 @@ function deleteGroup() {
                 groupIDs += ',';
             groupIDs += rows[i].GroupID;
         }
-        confirmBox('操作提示', '正在执行删除操作，请确定？', function () {
-            
-            $.ajax({
-                url: dealAjaxUrl('../public/ajax/ajax.ashx'),
-                data: { 'action': 'deleteGroup', 'groupids': groupIDs },
-                dataType: 'json',
-                type: 'POST',
-                success: function (data) {
-                    if (data.msgOK) {
-                        alertInfo('操作提示', data.msg);
-                        getGroupList();
+        $.messager.confirm('操作提示', '正在执行删除操作，请确定？', function (r) {
+            if (r) {
+                $.ajax({
+                    url: dealAjaxUrl('../public/ajax/ajax.ashx'),
+                    data: { 'action': 'deleteGroup', 'groupids': groupIDs },
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (data) {
+                        if (data.msgOK) {
+                            alertInfo('操作提示', data.msg);
+                            getGroupList();
+                        }
+                        else {
+                            alertError('错误提示', data.ex);
+                        }
                     }
-                    else {
-                        alertError('错误提示', data.ex);
-                    }
-                }
-            });
+                });
+            }
         });
     }
     else {

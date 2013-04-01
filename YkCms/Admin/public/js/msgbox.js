@@ -125,10 +125,10 @@ function showBottomRight(title, msg, showType) {
     });
 }
 //确定对话框
-function confirmBox(title, msg, callBackFun) {
+function confirmBox(title, msg) {
     $.messager.confirm(title, msg, function (r) {
         if (r) {
-            callBackFun();
+            return r;
         }
     });
 }
@@ -145,14 +145,14 @@ function alertMsg(title,msg) {
     $.messager.alert(title,msg);
 }
 function alertError(title, msg) {
-    $.messager.alert(title, msg, 'error');
+    $.messager.alert(title, '<div style="line-height:30px;">' + msg + '</div>', 'error');
 }
 function alertInfo(title, msg) {
-    $.messager.alert(title, msg, 'info');
+    $.messager.alert(title, '<div style="line-height:30px;">' + msg + '</div>', 'info');
 }
 function alertQuestion(title, msg) {
-    $.messager.alert(title, msg, 'question');
+    $.messager.alert(title, '<div style="line-height:30px;">' + msg + '</div>', 'question');
 }
 function alertWaring(title, msg) {
-    $.messager.alert(title, msg, 'warning');
+    $.messager.alert(title, '<div style="line-height:30px;">' + msg + '</div>', 'warning');
 }

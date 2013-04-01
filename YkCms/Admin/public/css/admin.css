@@ -42,3 +42,10 @@
 #sortWin dt{float:left;padding:12px 0 4px;width:100px; text-align:right; margin:0px;}
 #sortWin dd{text-align:left;height:auto;padding:8px 0;margin-left:5px; }
 #sortWin textarea{ width:300px; height:38px;}
+/*栏目模板表单*/
+#templateWin{ width:800px;}
+#templateWin dl{padding-left:14px; }
+#templateWin dt{float:left;padding:12px 0 4px;width:100px; text-align:right; margin:0px;}
+#templateWin dd{text-align:left;height:auto;padding:8px 0;margin-left:5px; }
+#templatesource{ width:450px; height:300px;}
+

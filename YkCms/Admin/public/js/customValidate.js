@@ -92,7 +92,13 @@ $.extend($.fn.validatebox.defaults.rules, {
             return checkSortName(value);
         },
         message: '该名称已存在'
+    },
+    checkTemplateName: {
+        validator: function (value, param) {
+            return checkTemplateName(value);
+        }
     }
+
 });
 /* 密码由字母和数字组成，至少6位 */
 var safePassword = function (value) {
@@ -146,7 +152,7 @@ var isDateTime = function (format, reObj) {
 var checkGroupName = function (value) {
     var flag = false;
     $.ajax({
-        url: dealAjaxUrl('ajax/ajax.ashx'),
+        url: dealAjaxUrl('../public/ajax/ajax.ashx'),
         data: { 'action': 'checkGroupName', 'groupname': value, 'groupid': $('#admingroup-groupid').val() },
         dataType: 'json',
         type: 'POST',
@@ -161,7 +167,7 @@ var checkGroupName = function (value) {
 var checkAdminAccount = function (value) {
     var flag = false;    
     $.ajax({
-        url: dealAjaxUrl('ajax/ajax.ashx'),
+        url: dealAjaxUrl('../public/ajax/ajax.ashx'),
         data: { 'action': 'checkAdminAccount', 'adminaccount': value, 'adminid': $('#adminlist-adminid').val() },
         dataType: 'json',
         type: 'POST',
@@ -176,7 +182,7 @@ var checkAdminAccount = function (value) {
 var checkSortAttributeName = function (value) {
     var flag = false;
     $.ajax({
-        url: dealAjaxUrl('ajax/ajax.ashx'),
+        url: dealAjaxUrl('../public/ajax/ajax.ashx'),
         data: { 'action': 'checkSortAttributeName', 'sortattributename': value, 'sortattributeid': $('#sortattribute-sortattributeid').val() },
         dataType: 'json',
         type: 'POST',
@@ -191,8 +197,23 @@ var checkSortAttributeName = function (value) {
 var checkSortName = function (value) {
     var flag = false;
     $.ajax({
-        url: dealAjaxUrl('ajax/ajax.ashx'),
+        url: dealAjaxUrl('../public/ajax/ajax.ashx'),
         data: { 'action': 'checkSortName', 'sortname': value, 'sortid': $('#sortlist-sortid').val() },
+        dataType: 'json',
+        type: 'POST',
+        async: false,
+        success: function (data) {
+            flag = data.msgOK;
+        }
+    });
+    return flag;
+}
+//验证模板名称
+var checkTemplateName = function (value) {
+    var flag = false;
+    $.ajax({
+        url: dealAjaxUrl('../public/ajax/ajax.ashx'),
+        data: { 'action': 'checkTemplateName', 'templatename': value, 'templateid': $('#templatelist-templateid').val() },
         dataType: 'json',
         type: 'POST',
         async: false,

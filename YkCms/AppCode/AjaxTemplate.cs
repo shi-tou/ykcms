@@ -44,17 +44,17 @@ namespace YkCms.AppCode
         /// </summary>
         public void AddTemplateModel()
         {
-            int templateid = RequestHelper.GetRequestInt("templatelist-templateid", 0);
-            string templatename = RequestHelper.GetRequestStr("templatelist-templatename", "");
-            string templateurl = RequestHelper.GetRequestStr("templatelist-templateurl", "");
-            string templatedesc = RequestHelper.GetRequestStr("templatelist-templatedesc", "");
-            string templatesource = RequestHelper.GetRequestStr("templatelist-templatesource", "");
+            int templateid = RequestHelper.GetRequestInt("templateid", 0);
+            string templatename = RequestHelper.GetRequestStr("templatename", "");
+            string templateurl = RequestHelper.GetRequestStr("templateurl", "");
+            string templatedesc = RequestHelper.GetRequestStr("templatedesc", "");
+            string templatesource = RequestHelper.GetRequestStr("templatesource", "");
 
             TemplateInfo sinfo = new TemplateInfo();
             sinfo.TemplateName = templatename;
             sinfo.TemplateUrl = templatedesc;
             sinfo.TemplateDesc = templatedesc;
-            sinfo.TemplateSource = templatedesc;
+            sinfo.TemplateSource = JsonCharFilter(templatesource);
             sinfo.AdminID = adminInfo.AdminID;
             sinfo.AdminName = adminInfo.AdminName;
             sinfo.CreateTime = DateTime.Now;
@@ -72,6 +72,17 @@ namespace YkCms.AppCode
                 AjaxMsg.msg = "\"msg\":\"修改成功\"";
             }
         }
+        public string JsonCharFilter(string sourceStr)
+        {
+            sourceStr = sourceStr.Replace("\\", "\\\\");
+            sourceStr = sourceStr.Replace("\b", "\\\b");
+            sourceStr = sourceStr.Replace("\t", "\\\t");
+            sourceStr = sourceStr.Replace("\n", "\\\n");
+            sourceStr = sourceStr.Replace("\n", "\\\n");
+            sourceStr = sourceStr.Replace("\f", "\\\f");
+            sourceStr = sourceStr.Replace("\r", "\\\r");
+            return sourceStr.Replace("\"", "\\\"");
+        }
         /// <summary>
         /// 获取栏目模板列表
         /// </summary>
@@ -79,6 +90,7 @@ namespace YkCms.AppCode
         {
             DataSet ds = template.GetAllList();
             AjaxMsg.msg = "\"rows\":" + JsonHelper.ToJson(ds.Tables[0], "") + ",\"total\":" + ds.Tables[0].Rows.Count;
+            //AjaxMsg.msg = "\"rows\":" + ds.Tables[0], "") + ",\"total\":" + ds.Tables[0].Rows.Count;
         }
         /// <summary>
         /// 删除栏目模板
@@ -97,8 +109,16 @@ namespace YkCms.AppCode
         {
             int templateid = RequestHelper.GetRequestInt("templateid", 0);
             TemplateInfo sinfo = template.GetModelByCache(templateid);
-            AjaxMsg.msg = "\"msg\":{\"TemplateID\":" + sinfo.TemplateID + ",\"TemplateName\":\"" + sinfo.TemplateName + ",\"TemplateUrl\":\"" + sinfo.TemplateUrl + "\",\"TemplateDesc\":\"" + sinfo.TemplateDesc + ",\"TemplateSource\":\"" + sinfo.TemplateSource
-                + "\",\"AdminName\":\"" + sinfo.AdminName + "\",\"CreateTime\":\"" + sinfo.CreateTime + "\"}";
+            if (sinfo != null)
+            {
+                AjaxMsg.msg = "\"msg\":{\"TemplateID\":" + sinfo.TemplateID + ",\"TemplateName\":\"" + sinfo.TemplateName + "\",\"TemplateUrl\":\"" + sinfo.TemplateUrl + "\",\"TemplateDesc\":\"" + sinfo.TemplateDesc + "\",\"TemplateSource\":\"" + sinfo.TemplateSource
+                    + "\",\"AdminName\":\"" + sinfo.AdminName + "\",\"CreateTime\":\"" + sinfo.CreateTime + "\"}";
+            }
+            else
+            {
+                AjaxMsg.msgOK = false;
+                AjaxMsg.ex = "找不到数据！";
+            }
         }
         /// <summary>
         /// 查询栏目模板

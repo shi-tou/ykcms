@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -44,6 +47,7 @@
     <Content Include="Admin\public\css\admin.css" />
     <Content Include="Admin\public\css\login.css" />
     <Content Include="Admin\public\js\AjaxCommon.js" />
+    <Content Include="Admin\public\js\base64.js" />
     <Content Include="Admin\public\js\customValidate.js" />
     <Content Include="Admin\public\js\admin.js" />
     <Content Include="Admin\index.aspx" />

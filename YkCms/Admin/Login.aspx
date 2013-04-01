@@ -19,9 +19,9 @@
             <dl>
                 <dt style="color:Red;">初始账号：</dt><dd style="color:Red;">admin/admin</dd>
                 <dt>管理账号：</dt>
-                <dd><input name="adminaccount" id="adminaccount" type="text" class="text easyui-validatebox" data-options="required:true"  missingMessage="请输入管理账号" /></dd>
+                <dd><input name="adminaccount" id="adminaccount" type="text" value="admin" class="text easyui-validatebox" data-options="required:true" missingMessage="请输入管理账号" /></dd>
                 <dt>管理密码：</dt>
-                <dd><input name="adminpwd" id="adminpwd" type="password" class="text easyui-validatebox" data-options="required:true" missingMessage="请输入管理密码" /></dd>
+                <dd><input name="adminpwd" id="adminpwd" type="password" value="admin" class="text easyui-validatebox" data-options="required:true" missingMessage="请输入管理密码" /></dd>
             </dl>
             </form>
             <dl>

@@ -71,12 +71,12 @@ function addSortAttributeModel() {
             type: 'POST',
             success: function (data) {
                 if (data.msgOK) {
-                    alert(data.msg);
+                    alertInfo('操作提示', data.msg);
                     cancelSortAttributeWin();
                     getSortAttributeList();
                 }
                 else {
-                    alert(data.ex);
+                    alertError('错误提示', data.ex);
                 }
             }
         });
@@ -100,17 +100,17 @@ function getSortAttributeModel() {
                     $('#sortattribute-sortattributedesc').val(data.msg.SortAttributeDesc);
                 }
                 else {
-                    alert(data.ex);
+                    alertError('错误提示', data.ex);
                 }
             }
         });
     }
     else if (rows.length == 0) {
-        alert('请选择要修改的记录！');
+        alertInfo('操作提示', '请选择要修改的记录');
         return;
     }
     else {
-        alert('每次只能修改一条记录！');
+        alertInfo('操作提示', '每次只能修改一条记录!');
         return;
     }
     $('#sortattributeWin').window({
@@ -122,28 +122,29 @@ function getSortAttributeModel() {
 function deleteSortAttribute() {
     var sortattributeIDs = '';
     var rows = $('#sortattributeList').datagrid('getSelections'); //getSelections获取多行(注：getSelected可获取单行)
-    if (rows.length > 0) {
-        if (!confirm("正在执行删除操作，请确定？")) {
-            return;
-        }
+    if (rows.length > 0) {        
         for (var i = 0; i < rows.length; i++) {
             if (i != 0)
                 sortattributeIDs += ',';
             sortattributeIDs += rows[i].SortAttributeID;
         }
-        $.ajax({
-            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
-            data: { 'action': 'deleteSortAttribute', 'sortattributeids': sortattributeIDs },
-            dataType: 'json',
-            type: 'POST',
-            success: function (data) {
-                if (data.msgOK) {
-                    alert(data.msg);
-                    getSortAttributeList();
-                }
-                else {
-                    alert(data.ex);
-                }
+        $.messager.confirm('操作提示', '正在执行删除操作，请确定？', function (r) {
+            if (r) {
+                $.ajax({
+                    url: dealAjaxUrl('../public/ajax/ajax.ashx'),
+                    data: { 'action': 'deleteSortAttribute', 'sortattributeids': sortattributeIDs },
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (data) {
+                        if (data.msgOK) {
+                            alertInfo('操作提示', data.msg);
+                            getSortAttributeList();
+                        }
+                        else {
+                            alertError('错误提示', data.ex);
+                        }
+                    }
+                });
             }
         });
     }

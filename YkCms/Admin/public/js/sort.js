@@ -123,28 +123,29 @@ function getSortModel() {
 function deleteSort() {
     var sortIDs = '';
     var rows = $('#sortList').datagrid('getSelections'); //getSelections获取多行(注：getSelected可获取单行)
-    if (rows.length > 0) {
-        if (!confirmBox('操作提示', '正在执行删除操作，请确定？')) {
-            return;
-        }
+    if (rows.length > 0) {        
         for (var i = 0; i < rows.length; i++) {
             if (i != 0)
                 sortIDs += ',';
             sortIDs += rows[i].SortID;
         }
-        $.ajax({
-            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
-            data: { 'action': 'deleteSort', 'sortids': sortIDs },
-            dataType: 'json',
-            type: 'POST',
-            success: function (data) {
-                if (data.msgOK) {
-                    alertInfo('操作提示', data.msg);
-                    getSortList();
-                }
-                else {
-                    lertError('错误提示', data.ex);
-                }
+        $.messager.confirm('操作提示', '正在执行删除操作，请确定？', function (r) {
+            if (r) {
+                $.ajax({
+                    url: dealAjaxUrl('../public/ajax/ajax.ashx'),
+                    data: { 'action': 'deleteSort', 'sortids': sortIDs },
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (data) {
+                        if (data.msgOK) {
+                            alertInfo('操作提示', data.msg);
+                            getSortList();
+                        }
+                        else {
+                            lertError('错误提示', data.ex);
+                        }
+                    }
+                });
             }
         });
     }

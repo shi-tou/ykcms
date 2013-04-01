@@ -42,28 +42,29 @@ function getSyslogList(pagesize,pageindex) {
 function deleteSyslog() {
     var syslogIDs = '';
     var rows = $('#syslogList').datagrid('getSelections'); //getSelections获取多行(注：getSelected可获取单行)
-    if (rows.length > 0) {
-        if (!confirmBox('操作提示', '正在执行删除操作，请确定？')) {
-            return;
-        }
+    if (rows.length > 0) {       
         for (var i = 0; i < rows.length; i++) {           
             if (i != 0)
                 syslogIDs += ',';
             syslogIDs += rows[i].SysLogID;
         }
-        $.ajax({
-            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
-            data: { 'action': 'deleteSyslog', 'syslogIDs': syslogIDs },
-            dataType: 'json',
-            type: 'POST',
-            success: function (data) {
-                if (data.msgOK) {
-                    alertInfo('操作提示', data.msg);
-                    getSyslogList();
-                }
-                else {
-                    alertError('错误提示', data.ex);
-                }
+        $.messager.confirm('操作提示', '正在执行删除操作，请确定？', function (r) {
+            if (r) {
+                $.ajax({
+                    url: dealAjaxUrl('../public/ajax/ajax.ashx'),
+                    data: { 'action': 'deleteSyslog', 'syslogIDs': syslogIDs },
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (data) {
+                        if (data.msgOK) {
+                            alertInfo('操作提示', data.msg);
+                            getSyslogList();
+                        }
+                        else {
+                            alertError('错误提示', data.ex);
+                        }
+                    }
+                });
             }
         });
     }
