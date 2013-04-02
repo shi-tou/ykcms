@@ -61,6 +61,7 @@
     <Content Include="Admin\public\js\sortattribute.js" />
     <Content Include="Admin\public\js\template.js" />
     <Content Include="Admin\public\Web.config" />
+    <Content Include="Admin\Sort\ModifyTemplate.aspx" />
     <Content Include="Admin\Sort\SortAttributeList.aspx" />
     <Content Include="Admin\Sort\SortList.aspx" />
     <Content Include="Admin\Sort\TemplateList.aspx" />
@@ -921,6 +922,13 @@
     </Compile>
     <Compile Include="Admin\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Sort\ModifyTemplate.aspx.cs">
+      <DependentUpon>ModifyTemplate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Sort\ModifyTemplate.aspx.designer.cs">
+      <DependentUpon>ModifyTemplate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Sort\SortAttributeList.aspx.cs">
       <DependentUpon>SortAttributeList.aspx</DependentUpon>

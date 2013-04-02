@@ -11,7 +11,6 @@
         <script src="../public/js/customValidate.js?t=<%=DateTime.Now.ToString() %>" type="text/javascript"></script>
         <script src="../public/js/msgbox.js" type="text/javascript"></script>
         <script src="../public/js/common.js" type="text/javascript"></script>
-        <script src="../public/js/base64.js" type="text/javascript"></script>
         <script src="../public/js/template.js?t=<%=DateTime.Now.ToString() %>" type="text/javascript"></script>
        
         <script type="text/javascript">
@@ -67,6 +66,10 @@
                     <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="addTemplateModel();" >确 定</a>
                     <a class="easyui-linkbutton" data-options="iconCls:'icon-no'" onclick="cancelTemplateWin();" >取 消</a>
                 </div>
+            </div>
+            <!--start 表单窗口-->
+            <div id="templateWin0" class="easyui-window" title="修改模板" data-options="iconCls:'icon-save',inline:true,modal:true,top:'20px',closed:true,minimizable:false,maximizable:false,collapsible:false" >
+
             </div>
             <!--end 表单窗口-->
         </div>

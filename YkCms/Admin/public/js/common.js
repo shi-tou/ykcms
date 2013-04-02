@@ -134,18 +134,6 @@ function setPager(p) {
         beforePageText: '第', //页数文本框前显示的汉字 
         afterPageText: '页    共 {pages} 页',
         displayMsg: '<div style="padding-right:20px;">当前显示 <b>{from} - {to}</b> 条记录   共 <b>{total}</b> 条记录<div>'
-//        onBeforeRefresh: function () {
-//            alert('before refresh');
-//        },
-//        onRefresh: function (pageNumber, pageSize) {
-//            callback(pagesize, pageindex);
-//        },
-//        onChangePageSize: function () {
-//            
-//        },
-//        onSelectPage: function (pageNumber, pageSize) {
-//            callback(pageNumber, pageSize);
-//        }
     });
 }
 //实现iframe自适应高度
@@ -161,4 +149,40 @@ function SetWinHeight(obj) {
             }
         }
     }
+}
+//js字符过滤html标签互转函数
+function htmlencode(str) {
+    str = str.replace(/&/g, '&amp;');
+    str = str.replace(/</g, '&lt;');
+    str = str.replace(/>/g, '&gt;');
+    str = str.replace(/(?:t| |v|r)*n/g, '<br />');
+    str = str.replace(/ /g, '&nbsp; ');
+    str = str.replace(/t/g, '&nbsp;&nbsp;&nbsp;');
+    str = str.replace(/x22/g, '&quot;');
+    str = str.replace(/x27/g, '&#39;');
+    return str;
+}
+
+function htmldecode(str) {
+    str = str.replace('&lt;', '<');
+    str = str.replace('&gt;', '>');
+    str = str.replace('&nbsp;', ' ');
+    str = str.replace('<br>', '\n');
+    str = str.replace('&amp;', '&');
+    str = str.replace('&quot;', '"');
+    return str;
+}
+
+function textencode(str) {
+    str = str.replace(/&amp;/gi, '&');
+    str = str.replace(/</g, '&lt;');
+    str = str.replace(/>/g, '&gt;');
+    return str;
+}
+
+function textdecode(str) {
+    str = str.replace(/&amp;/gi, '&');
+    str = str.replace(/&lt;/gi, '<');
+    str = str.replace(/&gt;/gi, '>');
+    return str;
 }

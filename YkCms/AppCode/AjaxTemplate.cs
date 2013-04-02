@@ -54,7 +54,7 @@ namespace YkCms.AppCode
             sinfo.TemplateName = templatename;
             sinfo.TemplateUrl = templatedesc;
             sinfo.TemplateDesc = templatedesc;
-            sinfo.TemplateSource = JsonCharFilter(templatesource);
+            sinfo.TemplateSource = StringPlus.JosnFilter(templatesource);
             sinfo.AdminID = adminInfo.AdminID;
             sinfo.AdminName = adminInfo.AdminName;
             sinfo.CreateTime = DateTime.Now;
@@ -71,18 +71,7 @@ namespace YkCms.AppCode
                 log.Add(new SysLogInfo("栏目模板管理", "修改", "修改编号为【" + templateid + "】的栏目模板名称为", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
                 AjaxMsg.msg = "\"msg\":\"修改成功\"";
             }
-        }
-        public string JsonCharFilter(string sourceStr)
-        {
-            sourceStr = sourceStr.Replace("\\", "\\\\");
-            sourceStr = sourceStr.Replace("\b", "\\\b");
-            sourceStr = sourceStr.Replace("\t", "\\\t");
-            sourceStr = sourceStr.Replace("\n", "\\\n");
-            sourceStr = sourceStr.Replace("\n", "\\\n");
-            sourceStr = sourceStr.Replace("\f", "\\\f");
-            sourceStr = sourceStr.Replace("\r", "\\\r");
-            return sourceStr.Replace("\"", "\\\"");
-        }
+        }       
         /// <summary>
         /// 获取栏目模板列表
         /// </summary>

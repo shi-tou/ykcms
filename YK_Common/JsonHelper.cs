@@ -11,29 +11,7 @@ namespace YK.Common
     /// 整理人：杨良斌
     /// </summary>
     public class JsonHelper
-    {
-        ///// <summary>
-        ///// 将DataSet转换成JSON格式数据
-        ///// </summary>
-        //public static string ToJson(DataSet ds, string[] fields)
-        //{
-        //    if (ds.Tables.Count != fields.Length)
-        //        return "-1";
-
-        //    StringBuilder sb = new StringBuilder();
-        //    sb.Append("[");
-        //    int i=0;
-        //    foreach (DataTable dt in ds.Tables)
-        //    {
-        //        if (sb.ToString() != "[") sb.Append(",");
-        //        sb.Append(dt.TableName + ":" + ToJson(dt, fields[i]));
-        //        i++;
-        //    }
-        //    sb.Append("]");
-
-        //    return sb.ToString();
-        //}
-
+    {       
         /// <summary>
         /// 将datatable数据转换成JSON数据
         /// </summary>

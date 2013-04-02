@@ -21,6 +21,13 @@ var templatetoolbar = [{
     iconCls: 'icon-edit',
     handler: function () {
         getTemplateModel();
+        $('#templateWin').window({
+            title: '修改栏目模板',
+            closed: false,
+            onClose: function () {
+                clearTemplateForm();
+            }
+        });
     }
 }, {
     text: '删除栏目模板',
@@ -61,7 +68,7 @@ function clearTemplateForm() {
     $('#templatelist-templatename').val('');
     $('#templatelist-templateurl').val('');
     $('#templatelist-templatedesc').val('');
-    $('#templatelist-templatesource').val('');   
+    CKEDITOR.instances.templatesource.setData('');  
 }
 //栏目模板添加
 function addTemplateModel() {
@@ -69,8 +76,9 @@ function addTemplateModel() {
     if ($('#templateForm').form('validate')) {
         $.ajax({
             url: dealAjaxUrl('../public/ajax/ajax.ashx'),
-            data: 'action=addTemplateModel&templateid=' + $('#templatelist-templateid').val() + '&templatename=' + $('#templatelist-templatename').val()
-                + '&templateurl=' + $('#templatelist-templateurl').val() + '&templatedesc=' + $('#templatelist-templatedesc').val() + '&templatesource=' + CKEDITOR.instances.templatesource.getData(),
+            data: { 'action': 'addTemplateModel', 'templateid': $('#templatelist-templateid').val(), 'templatename': $('#templatelist-templatename').val(),
+                'templateurl': $('#templatelist-templateurl').val(), 'templatedesc': $('#templatelist-templatedesc').val(), 'templatesource': CKEDITOR.instances.templatesource.getData()
+            },
             dataType: 'json',
             type: 'POST',
             success: function (data) {
@@ -103,7 +111,7 @@ function getTemplateModel() {
                     $('#templatelist-templatename').val(data.msg.TemplateName);
                     $('#templatelist-templateurl').val(data.msg.TemplateUrl);
                     $('#templatelist-templatedesc').val(data.msg.TemplateDesc);
-                    CKEDITOR.instances.templatesource.setData(data.msg.TemplateSource);
+                    //CKEDITOR.instances.templatesource.setData(htmldecode(data.msg.TemplateSource));
                     //$('#templatelist-templatesource').val(data.msg.TemplateSource);
                 }
                 else {
@@ -120,10 +128,6 @@ function getTemplateModel() {
         alertInfo('操作提示', '每次只能修改一条记录!');
         return;
     }
-    $('#templateWin').window({
-        title: '修改栏目模板',
-        closed: false
-    });
 }
 //删除栏目模板
 function deleteTemplate() {

@@ -7,13 +7,13 @@ namespace YK.Common
 {
     public class StringPlus
     {
-        public static List<string> GetStrArray(string str, char speater,bool toLower)
+        public static List<string> GetStrArray(string str, char speater, bool toLower)
         {
             List<string> list = new List<string>();
-            string[] ss =  str.Split(speater);
+            string[] ss = str.Split(speater);
             foreach (string s in ss)
             {
-                if (!string.IsNullOrEmpty(s) &&s !=speater.ToString())
+                if (!string.IsNullOrEmpty(s) && s != speater.ToString())
                 {
                     string strVal = s;
                     if (toLower)
@@ -29,7 +29,7 @@ namespace YK.Common
         {
             return str.Split(new char[',']);
         }
-        public static string GetArrayStr(List<string> list,string speater)
+        public static string GetArrayStr(List<string> list, string speater)
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < list.Count; i++)
@@ -46,8 +46,8 @@ namespace YK.Common
             }
             return sb.ToString();
         }
-        
-        
+
+
         #region 删除最后一个字符之后的字符
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace YK.Common
         /// <summary>
         /// 删除最后结尾的指定字符后的字符
         /// </summary>
-        public static string DelLastChar(string str,string strchar)
+        public static string DelLastChar(string str, string strchar)
         {
             return str.Substring(0, str.LastIndexOf(strchar));
         }
@@ -91,7 +91,7 @@ namespace YK.Common
                     c[i] = (char)(c[i] + 65248);
             }
             return new string(c);
-        }        
+        }
 
         /// <summary>
         ///  转半角的函数(SBC case)
@@ -200,7 +200,7 @@ namespace YK.Common
         }
         #endregion
 
-        #region 
+        #region
         /// <summary>
         /// 过滤HTML内容标签
         /// </summary>
@@ -226,9 +226,21 @@ namespace YK.Common
             str.Replace("<", "");
             str.Replace(">", "");
             str.Replace("\r\n", "");
-            str = System.Web.HttpContext.Current.Server.HtmlEncode(str).Trim();          
+            str = System.Web.HttpContext.Current.Server.HtmlEncode(str).Trim();
             return str;
         }
+        public static string JosnFilter(string str)
+        {
+            //str含有HTML标签的文本
+            str = str.Replace("<", "&lt;");
+            str = str.Replace(">", "&gt;");
+            str = str.Replace(" ", "&nbsp;");
+            str = str.Replace("\n", "<br>");
+            str = str.Replace("&", "&amp;");
+            str = str.Replace("\"", "&quot;");
+            str = str.Replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;");
+            return str;
+        }       
         #endregion
     }
 }
