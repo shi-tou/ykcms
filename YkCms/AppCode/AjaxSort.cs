@@ -13,7 +13,7 @@ namespace YkCms.AppCode
 {
     /// <summary>
     /// 文件：AjaxGroup
-    /// 描述：仅限组操作类
+    /// 描述：栏目操作类
     /// 创建人：杨良斌
     /// </summary>
     public class AjaxSort
@@ -22,7 +22,7 @@ namespace YkCms.AppCode
         Sort sort = new Sort();
         SysLog log = new SysLog();
         /// <summary>
-        /// 验证栏目属性名称
+        /// 验证栏目名称
         /// </summary>
         public void CheckSortName()
         {
@@ -40,7 +40,7 @@ namespace YkCms.AppCode
             }
         }
         /// <summary>
-        /// 添加/修改栏目属性
+        /// 添加/修改栏目
         /// </summary>
         public void AddSortModel()
         {
@@ -71,19 +71,19 @@ namespace YkCms.AppCode
             if (sortid == 0)//添加
             {
                 sort.Add(sinfo);
-                log.Add(new SysLogInfo("栏目属性管理", "添加", "添加名称为【" + sortname + "】的栏目属性信息", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
+                log.Add(new SysLogInfo("栏目管理", "添加", "添加名称为【" + sortname + "】的栏目信息", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
                 AjaxMsg.msg = "\"msg\":\"添加成功\"";
             }
             else//修改
             {
                 sinfo.SortID = sortid;
                 sort.Update(sinfo);
-                log.Add(new SysLogInfo("栏目属性管理", "修改", "修改编号为【" + sortid + "】的栏目属性名称为", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
+                log.Add(new SysLogInfo("栏目管理", "修改", "修改编号为【" + sortid + "】的栏目名称为", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
                 AjaxMsg.msg = "\"msg\":\"修改成功\"";
             }
         }
         /// <summary>
-        /// 获取栏目属性列表
+        /// 获取栏目列表
         /// </summary>
         public void GetSortList()
         {
@@ -91,17 +91,17 @@ namespace YkCms.AppCode
             AjaxMsg.msg = "\"rows\":" + JsonHelper.ToJson(ds.Tables[0], "") + ",\"total\":" + ds.Tables[0].Rows.Count;
         }
         /// <summary>
-        /// 删除栏目属性
+        /// 删除栏目
         /// </summary>
         public void DeleteSort()
         {
             string sortids = RequestHelper.GetRequestStr("sortids", "0");
             sort.DeleteList(sortids);
-            log.Add(new SysLogInfo("栏目属性管理", "删除", "删除了编号为【" + sortids + "】的栏目属性信息", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
+            log.Add(new SysLogInfo("栏目管理", "删除", "删除了编号为【" + sortids + "】的栏目信息", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
             AjaxMsg.msg = "\"msg\":\"删除成功\"";
         }
         /// <summary>
-        /// 获取栏目属性
+        /// 获取栏目
         /// </summary>
         public void GetSortModel()
         {
@@ -111,7 +111,7 @@ namespace YkCms.AppCode
             //    sinfo.AdminName + "\",\"CreateTime\":\"" + sinfo.CreateTime + "\"}";
         }
         /// <summary>
-        /// 查询栏目属性
+        /// 查询栏目
         /// </summary>
         /// <param name="adminid"></param>
         public void SearchSort()
@@ -130,7 +130,7 @@ namespace YkCms.AppCode
             AjaxMsg.msg = "\"rows\":" + JsonHelper.ToJson(ds.Tables[0], "") + ",\"total\":" + ds.Tables[0].Rows.Count;
         }
         /// <summary>
-        /// 获取栏目属性信息，并返回select的HTML
+        /// 获取栏目信息，并返回select的HTML
         /// </summary>
         public string GetSortSelectHtml(bool flag)
         {

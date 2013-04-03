@@ -45,9 +45,9 @@ function getSortList() {
             { field: 'SortID', width: 30, align: '', checkbox: true },
             { field: 'SortName', title: '栏目名称', width: 150, align: 'center' },
             { field: 'SortUrl', title: '栏目描述', width: 300, align: 'center' },
-            { field: 'PageTitle', title: 'Title', width: 100, align: 'center' },
-            { field: 'PageKeywords', title: 'Keywords', width: 150, align: 'center' },
-            { field: 'PageDesc', title: 'Description', width: 150, align: 'center' }
+            { field: 'PageTitle', title: '页面标题', width: 100, align: 'center' },
+            { field: 'PageKeywords', title: '页面关键字', width: 150, align: 'center' },
+            { field: 'PageDesc', title: '页面描述', width: 150, align: 'center' }
         ]],
         loadMsg: '正在加载数据，请稍候……',
         rownumbers: true, //显示记录数

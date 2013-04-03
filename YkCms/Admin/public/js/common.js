@@ -137,15 +137,15 @@ function setPager(p) {
     });
 }
 //实现iframe自适应高度
-function SetWinHeight(obj) {
+function SetWinHeight(obj,height) {
     var win = obj;
     if (document.getElementById) {
         if (win && !window.opera) {
             if (win.contentDocument && win.contentDocument.body.offsetHeight) {
-                win.height = ((win.contentDocument.body.offsetHeight < 450) ? 450 : win.contentDocument.body.offsetHeight);
+                win.height = ((win.contentDocument.body.offsetHeight < height) ? height : win.contentDocument.body.offsetHeight);
             }
             else if (win.Document && win.Document.body.scrollHeight) {
-                win.height = ((win.Document.body.scrollHeight < 450) ? 450 : win.Document.body.scrollHeight);
+                win.height = ((win.Document.body.scrollHeight < height) ? height : win.Document.body.scrollHeight);
             }
         }
     }

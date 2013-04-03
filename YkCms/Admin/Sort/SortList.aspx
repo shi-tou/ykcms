@@ -55,7 +55,7 @@
                             <dt>栏目属性:</dt>
                             <dd><select id="sortlist-sortattributeid" name="sortlist-sortattributeid"><%=SortAttributeSelectHtml %></select></dd>
                             <dt>栏目模板:</dt>
-                            <dd><select id="sortlist-sorttemplateid" name="sortlist-sorttemplateid"></select></dd>
+                            <dd><select id="sortlist-sorttemplateid" name="sortlist-sorttemplateid"><%=SortTemplateSelectHtml %></select></dd>
                             <dt>栏目Banner:</dt>
                             <dd><input class="easyui-validatebox" id="sortlist-bannerurl" name="sortlist-bannerurl" /></dd>
                             <dt>状态:</dt>

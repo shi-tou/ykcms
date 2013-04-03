@@ -56,7 +56,7 @@ namespace YkCms.AppCode
             sinfo.TemplateName = templatename;
             sinfo.TemplateUrl = templatedesc;
             sinfo.TemplateDesc = templatedesc;
-            sinfo.TemplateSource = StringPlus.JosnFilter(templatesource);
+            sinfo.TemplateSource = templatesource;
             sinfo.AdminID = adminInfo.AdminID;
             sinfo.AdminName = adminInfo.AdminName;
             sinfo.CreateTime = DateTime.Now;
@@ -80,7 +80,7 @@ namespace YkCms.AppCode
         public void GetTemplateList()
         {
             DataSet ds = template.GetAllList();
-            AjaxMsg.msg = "\"rows\":" + JsonConvert.SerializeObject(ds.Tables[0], new DataTableConverter()) +",\"total\":" + ds.Tables[0].Rows.Count;
+            AjaxMsg.msg = "\"rows\":" + JsonConvert.SerializeObject(ds.Tables[0],new DataTableConverter()) + ",\"total\":" + ds.Tables[0].Rows.Count;
             //AjaxMsg.msg = "\"rows\":" + ds.Tables[0], "") + ",\"total\":" + ds.Tables[0].Rows.Count;
         }
         /// <summary>
