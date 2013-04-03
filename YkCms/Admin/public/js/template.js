@@ -21,13 +21,7 @@ var templatetoolbar = [{
     iconCls: 'icon-edit',
     handler: function () {
         getTemplateModel();
-        $('#templateWin').window({
-            title: '修改栏目模板',
-            closed: false,
-            onClose: function () {
-                clearTemplateForm();
-            }
-        });
+        
     }
 }, {
     text: '删除栏目模板',
@@ -39,6 +33,13 @@ var templatetoolbar = [{
 //取消添加栏目模板表单
 function cancelTemplateWin() {
     $('#templateWin').window({
+        closed: true
+    });
+    clearTemplateForm();
+}
+//取消添加栏目模板表单
+function cancelTemplateWin0() {
+    $('#templateWin0').window({
         closed: true
     });
     clearTemplateForm();
@@ -84,7 +85,7 @@ function addTemplateModel() {
             success: function (data) {
                 if (data.msgOK) {
                     alertInfo('操作提示', data.msg);
-                    cancelTemplateWin();
+                    cancelTemplateWin0();
                     getTemplateList();
                 }
                 else {
@@ -100,24 +101,10 @@ function getTemplateModel() {
     var rows = $('#templateList').datagrid('getSelections'); //getSelections获取多行(注：getSelected可获取单行)
     if (rows.length == 1) {
         templateID = rows[0].TemplateID;
-        $.ajax({
-            url: dealAjaxUrl('../public/ajax/ajax.ashx'),
-            data: { 'action': 'getTemplateModel', 'templateid': templateID },
-            dataType: 'json',
-            type: 'POST',
-            success: function (data) {
-                if (data.msgOK) {
-                    $('#templatelist-templateid').val(data.msg.TemplateID);
-                    $('#templatelist-templatename').val(data.msg.TemplateName);
-                    $('#templatelist-templateurl').val(data.msg.TemplateUrl);
-                    $('#templatelist-templatedesc').val(data.msg.TemplateDesc);
-                    //CKEDITOR.instances.templatesource.setData(htmldecode(data.msg.TemplateSource));
-                    //$('#templatelist-templatesource').val(data.msg.TemplateSource);
-                }
-                else {
-                    alertError('错误提示', data.ex);
-                }
-            }
+        $('#templateWin').window({
+            title: '修改栏目模板',
+            closed: false,
+            content: "<iframe scrolling=\"no\" frameborder=\"0\" src=\"ModifyTemplate.aspx?tid="+ templateID +"\" style=\"width:100%;\" onload=\"Javascript:SetWinHeight(this,350);\"></iframe>"
         });
     }
     else if (rows.length == 0) {

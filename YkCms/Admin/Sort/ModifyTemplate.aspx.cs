@@ -23,6 +23,12 @@ namespace YkCms
             {
                 BindTemplate();
             }
+            this.templatesource.config.toolbar = new object[]{
+                new object[] { "Source" },
+                new object[] { "Cut", "Copy", "Paste", "PasteText", "PasteFromWord"},
+                new object[] { "Undo", "Redo", "-", "Find", "Replace" },
+                new object[] { "Bold", "Italic", "Underline", "Strike" }
+            };
         }
         public void BindTemplate()
         {
