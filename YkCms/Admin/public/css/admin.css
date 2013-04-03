@@ -48,4 +48,7 @@
 #templateWin dt{float:left;padding:12px 0 4px;width:100px; text-align:right; margin:0px;}
 #templateWin dd{text-align:left;height:auto;padding:8px 0;margin-left:5px; }
 #templatesource{ width:450px; height:300px;}
-
+#templateForm dl{padding-left:14px; }
+#templateForm dt{float:left;padding:12px 0 4px;width:100px; text-align:right; margin:0px;}
+#templateForm dd{text-align:left;height:auto;padding:8px 0;margin-left:5px; }
+templateWin0{width:800px;}

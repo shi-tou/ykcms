@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TemplateList.aspx.cs" Inherits="YkCms.TemplateList" %>
-<%@ Register Assembly="CKEditor.Net" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 <html>
     <head>
         <title></title>
@@ -8,14 +7,15 @@
         <link href="../public/css/admin.css" rel="stylesheet" type="text/css" />
         <script src="/jquery-easyui-1.3.2/jquery-1.8.0.min.js" type="text/javascript"></script>
         <script src="/jquery-easyui-1.3.2/jquery.easyui.min.js" type="text/javascript"></script>
+        <script src="../../ckeditor/ckeditor.js" type="text/javascript"></script>
         <script src="../public/js/customValidate.js?t=<%=DateTime.Now.ToString() %>" type="text/javascript"></script>
         <script src="../public/js/msgbox.js" type="text/javascript"></script>
         <script src="../public/js/common.js" type="text/javascript"></script>
-        <script src="../public/js/template.js?t=<%=DateTime.Now.ToString() %>" type="text/javascript"></script>
-       
+        <script src="../public/js/template.js?t=<%=DateTime.Now.ToString() %>" type="text/javascript"></script>       
         <script type="text/javascript">
             $(function () {
                 getTemplateList();
+                CKEDITOR.replace("templatesource");
             });
         </script>
     </head>
@@ -50,14 +50,14 @@
                         <dl>
                             <dt>模板名称:</dt>
                             <dd><input class="easyui-validatebox" type="text" id="templatelist-templatename" name="templatelist-templatename" data-options="required:true" missingmessage="请输入模板名称！" validtype="checkTemplateName" /></dd>
-                            <dt>模板Url:</dt>
+                            <dt>模板名称:</dt>
                             <dd><input class="easyui-validatebox" type="text" id="templatelist-templateurl" name="templatelist-templateurl" /></dd>
                             <dt>模板描述:</dt>
                             <dd><textarea class="textarea" id="templatelist-templatedesc" name="templatelist-templatedesc"></textarea></dd>
                         </dl>
                     </div>
                     <div title="模板内容" style="padding:10px">
-                        <CKEditor:CKEditorControl ID="templatesource" Name="templatesource" BasePath="/ckeditor" runat="server"></CKEditor:CKEditorControl>
+                        <textarea  cols="90" rows="8" id="templatesource" name="templatesource"></textarea>
                     </div>
                 </div>
                 </form>
@@ -69,7 +69,6 @@
             </div>
             <!--start 表单窗口-->
             <div id="templateWin0" class="easyui-window" title="修改模板" data-options="iconCls:'icon-save',inline:true,modal:true,top:'20px',closed:true,minimizable:false,maximizable:false,collapsible:false" >
-
             </div>
             <!--end 表单窗口-->
         </div>
