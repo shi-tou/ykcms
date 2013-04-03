@@ -25,7 +25,7 @@
                     <dt>模板名称:</dt>
                     <dd>
                         <input class="easyui-validatebox" type="text" id="templatelist-templatename" name="templatelist-templatename" data-options="required:true" missingmessage="请输入权限组名称！" validtype="checkTemplateName" /></dd>
-                    <dt>模板名称:</dt>
+                    <dt>模板Url:</dt>
                     <dd>
                         <input class="easyui-validatebox" type="text" id="templatelist-templateurl" name="templatelist-templateurl" /></dd>
                     <dt>模板描述:</dt>

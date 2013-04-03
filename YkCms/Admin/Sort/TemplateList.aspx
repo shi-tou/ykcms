@@ -49,8 +49,8 @@
 		            <div title="基本信息" style="padding:10px">
                         <dl>
                             <dt>模板名称:</dt>
-                            <dd><input class="easyui-validatebox" type="text" id="templatelist-templatename" name="templatelist-templatename" data-options="required:true" missingmessage="请输入权限组名称！" validtype="checkTemplateName" /></dd>
-                            <dt>模板名称:</dt>
+                            <dd><input class="easyui-validatebox" type="text" id="templatelist-templatename" name="templatelist-templatename" data-options="required:true" missingmessage="请输入模板名称！" validtype="checkTemplateName" /></dd>
+                            <dt>模板Url:</dt>
                             <dd><input class="easyui-validatebox" type="text" id="templatelist-templateurl" name="templatelist-templateurl" /></dd>
                             <dt>模板描述:</dt>
                             <dd><textarea class="textarea" id="templatelist-templatedesc" name="templatelist-templatedesc"></textarea></dd>

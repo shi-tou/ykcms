@@ -77,7 +77,7 @@ function addTemplateModel() {
         $.ajax({
             url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: { 'action': 'addTemplateModel', 'templateid': $('#templatelist-templateid').val(), 'templatename': $('#templatelist-templatename').val(),
-                'templateurl': $('#templatelist-templateurl').val(), 'templatedesc': $('#templatelist-templatedesc').val(), 'templatesource': CKEDITOR.instances.templatesource.getData()
+                'templateurl': $('#templatelist-templateurl').val(), 'templatedesc': $('#templatelist-templatedesc').val(), 'templatesource': HtmlEncode(CKEDITOR.instances.templatesource.getData())
             },
             dataType: 'json',
             type: 'POST',
@@ -111,7 +111,10 @@ function getTemplateModel() {
                     $('#templatelist-templatename').val(data.msg.TemplateName);
                     $('#templatelist-templateurl').val(data.msg.TemplateUrl);
                     $('#templatelist-templatedesc').val(data.msg.TemplateDesc);
-                    //CKEDITOR.instances.templatesource.setData(htmldecode(data.msg.TemplateSource));
+                    // CKEDITOR.instances.templatesource.insertHtml(HtmlDecode(data.msg.TemplateSource));
+                    alert(HtmlDecode(data.msg.TemplateSource));
+                    CKEDITOR.instances.templatesource.document.getBody().setHtml(HtmlDecode(data.msg.TemplateSource));
+                    //FCKeditorAPI.GetInstance('templatesource').EditorDocument.body.textContent = HtmlDecode(data.msg.TemplateSource);
                     //$('#templatelist-templatesource').val(data.msg.TemplateSource);
                 }
                 else {
@@ -128,6 +131,21 @@ function getTemplateModel() {
         alertInfo('操作提示', '每次只能修改一条记录!');
         return;
     }
+}
+// Html转码
+function HtmlEncode(encodeHtml) {
+    var div = document.createElement('div');
+    div.appendChild(encodeHtml);
+    return div.innerHTML;
+}
+
+// Html解码
+function HtmlDecode(decodeHtml) {
+    var temp = document.createElement('div');
+    temp.innerHTML = decodeHtml;
+    var output = temp.innerText || temp.textContent;
+    temp = null;
+    return output;
 }
 //删除栏目模板
 function deleteTemplate() {

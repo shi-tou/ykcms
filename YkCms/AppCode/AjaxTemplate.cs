@@ -8,6 +8,8 @@ using System.Data;
 using System.Text;
 using System.Data.OleDb;
 using System.Web.Security;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace YkCms.AppCode
 {
@@ -78,7 +80,7 @@ namespace YkCms.AppCode
         public void GetTemplateList()
         {
             DataSet ds = template.GetAllList();
-            AjaxMsg.msg = "\"rows\":" + JsonHelper.ToJson(ds.Tables[0], "") + ",\"total\":" + ds.Tables[0].Rows.Count;
+            AjaxMsg.msg = "\"rows\":" + JsonConvert.SerializeObject(ds.Tables[0], new DataTableConverter()) +",\"total\":" + ds.Tables[0].Rows.Count;
             //AjaxMsg.msg = "\"rows\":" + ds.Tables[0], "") + ",\"total\":" + ds.Tables[0].Rows.Count;
         }
         /// <summary>
@@ -100,8 +102,8 @@ namespace YkCms.AppCode
             TemplateInfo sinfo = template.GetModelByCache(templateid);
             if (sinfo != null)
             {
-                AjaxMsg.msg = "\"msg\":{\"TemplateID\":" + sinfo.TemplateID + ",\"TemplateName\":\"" + sinfo.TemplateName + "\",\"TemplateUrl\":\"" + sinfo.TemplateUrl + "\",\"TemplateDesc\":\"" + sinfo.TemplateDesc + "\",\"TemplateSource\":\"" + sinfo.TemplateSource
-                    + "\",\"AdminName\":\"" + sinfo.AdminName + "\",\"CreateTime\":\"" + sinfo.CreateTime + "\"}";
+                AjaxMsg.msg = "\"msg\":{\"TemplateID\":" + sinfo.TemplateID + ",\"TemplateName\":\"" + sinfo.TemplateName + "\",\"TemplateUrl\":\"" + sinfo.TemplateUrl + "\",\"TemplateDesc\":\"" + sinfo.TemplateDesc + "\",\"TemplateSource\":" + JsonConvert.SerializeObject(sinfo.TemplateSource)
+                    + ",\"AdminName\":\"" + sinfo.AdminName + "\",\"CreateTime\":\"" + sinfo.CreateTime + "\"}";
             }
             else
             {

@@ -21,7 +21,7 @@
 <body class="easyui-layout">
     <form id="form1" runat="server">
         <div data-options="region:'north',border:false,split:false" style="height:70px;background:#E6EEF8;padding:10px;">
-            <div class="headL"><h1 style="float:left;">云客管理系统后台</h1><span style="float:left;">&nbsp;--&nbsp;power by yangilangbin</span></div>
+            <div class="headL"><h1 style="float:left;">云客管理系统后台</h1><span style="float:left;">&nbsp;--&nbsp;power by yangliangbin</span></div>
             <div class="headR">当前时间：<span id="time"></span><span onclick="adminLoginOut();">退出登录</span></div>
         </div>
 	    <div data-options="region:'west',split:true,title:'系统菜单',iconCls:'icon-menuflag'" style="width:150px;">
