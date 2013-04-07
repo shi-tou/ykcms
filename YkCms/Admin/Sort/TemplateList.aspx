@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TemplateList.aspx.cs" Inherits="YkCms.TemplateList" %>
-<%@ Register Assembly="CKEditor.Net" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 <html>
     <head>
         <title></title>
@@ -8,6 +7,7 @@
         <link href="../public/css/admin.css" rel="stylesheet" type="text/css" />
         <script src="/jquery-easyui-1.3.2/jquery-1.8.0.min.js" type="text/javascript"></script>
         <script src="/jquery-easyui-1.3.2/jquery.easyui.min.js" type="text/javascript"></script>
+        <script src="../../ckeditor/ckeditor.js" type="text/javascript"></script>
         <script src="../public/js/customValidate.js?t=<%=DateTime.Now.ToString() %>" type="text/javascript"></script>
         <script src="../public/js/msgbox.js" type="text/javascript"></script>
         <script src="../public/js/common.js" type="text/javascript"></script>
@@ -15,6 +15,7 @@
         <script type="text/javascript">
             $(function () {
                 getTemplateList();
+                CKEDITOR.replace("templatesource");
             });
         </script>
     </head>
@@ -56,7 +57,7 @@
                         </dl>
                     </div>
                     <div title="模板内容" style="padding:10px">
-                        <CKEditor:CKEditorControl ID="templatesource" Name="templatesource" BasePath="/ckeditor" runat="server"></CKEditor:CKEditorControl>
+                        <textarea  cols="90" rows="8" id="templatesource" name="templatesource"></textarea>
                     </div>
                 </div>
                 </form>
