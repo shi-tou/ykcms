@@ -136,7 +136,7 @@ namespace YkCms.AppCode
         {
             StringBuilder sbHtml;
             if (flag)
-                sbHtml = new StringBuilder("<option value=\"0\">-请选择-</option>");
+                sbHtml = new StringBuilder("<option value=\"0\">-根节点-</option>");
             else
                 sbHtml = new StringBuilder();
             DataSet ds = sort.GetAllList();

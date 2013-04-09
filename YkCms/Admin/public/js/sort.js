@@ -63,7 +63,6 @@ function clearSortForm() {
 }
 //栏目添加
 function addSortModel() {
-    var data;
     if ($('#sortForm').form('validate')) {
         $.ajax({
             url: dealAjaxUrl('../public/ajax/ajax.ashx'),

@@ -47,7 +47,7 @@
 		            <div title="基本信息" style="padding:10px">
                         <dl>
                             <dt>上级栏目:</dt>
-                            <dd><select id="sortlist-parentid" name="sortlist-parentid"></select></dd>
+                            <dd><select id="sortlist-parentid" name="sortlist-parentid"><%=SortSelectHtml %></select></dd>
                             <dt>栏目名称:</dt>
                             <dd><input class="easyui-validatebox" type="text" id="sortlist-sortname" name="sortlist-sortname" data-options="required:true" missingmessage="请输入权限组名称！" validtype="checkSortName" /></dd>
                             <dt>栏目URL:</dt>
