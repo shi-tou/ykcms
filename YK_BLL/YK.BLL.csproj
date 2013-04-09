@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="Admin.cs" />
     <Compile Include="AdminGroup.cs" />
+    <Compile Include="Goods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sort.cs" />
     <Compile Include="SortAttribute.cs" />
@@ -52,6 +53,10 @@
     <ProjectReference Include="..\YK_DALFactory\YK.DALFactory.csproj">
       <Project>{36DA2DA8-96FF-4B25-A6D4-F2C1EB565D82}</Project>
       <Name>YK.DALFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YK_DBUtility\YK.DBUtility.csproj">
+      <Project>{61C7CE27-2631-4C92-9224-85DF5397D4E2}</Project>
+      <Name>YK.DBUtility</Name>
     </ProjectReference>
     <ProjectReference Include="..\YK_IDAL\YK.IDAL.csproj">
       <Project>{DCE3E896-25E8-4FDA-94E4-12488D2EDD55}</Project>

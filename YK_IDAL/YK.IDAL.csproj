@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="IAdmin.cs" />
     <Compile Include="IAdminGroup.cs" />
+    <Compile Include="IGoods.cs" />
     <Compile Include="ISort.cs" />
     <Compile Include="ISortAttribute.cs" />
     <Compile Include="ISysLog.cs" />

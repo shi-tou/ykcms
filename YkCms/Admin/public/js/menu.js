@@ -106,11 +106,11 @@ function add(type) {
                 return;
             addTab(title, "Content/NewsList.aspx", true)
             break;
-        case "ProductList":
+        case "GoodsList":
             title = "公司产品管理";
             if (isTabExist(title))
                 return;
-            addTab(title, "Content/ProductList.aspx", true)
+            addTab(title, "Content/GoodsList.aspx", true)
             break;
         case "CaseList":
             title = "成功案例管理";

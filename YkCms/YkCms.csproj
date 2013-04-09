@@ -47,6 +47,7 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\Content\GoodsList.aspx" />
     <Content Include="Admin\public\ajax\ValidateImage.aspx" />
     <Content Include="Admin\public\css\admin.css" />
     <Content Include="Admin\public\css\login.css" />
@@ -1474,6 +1475,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Content\GoodsList.aspx.cs">
+      <DependentUpon>GoodsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Content\GoodsList.aspx.designer.cs">
+      <DependentUpon>GoodsList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\public\ajax\ajax.ashx.cs">
       <DependentUpon>ajax.ashx</DependentUpon>
     </Compile>
@@ -1613,7 +1621,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin\Content\" />
     <Folder Include="Admin\public\images\" />
     <Folder Include="Admin\Seo\" />
     <Folder Include="App_Data\" />

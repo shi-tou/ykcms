@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="Admin.cs" />
     <Compile Include="AdminGroup.cs" />
+    <Compile Include="Goods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sort.cs" />
     <Compile Include="SortAttribute.cs" />

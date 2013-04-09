@@ -160,21 +160,21 @@ namespace YkCms.ajax
                     case "getSortList":
                         new AjaxSort().GetSortList();
                         break;
-                    ////添加栏目
-                    //case "AddSortModel":
-                    //    new AjaxSort().AddSortModel();
-                    //    break;
-                    //case "GetSortModel":
-                    //    new AjaxSort().GetSortModel();
-                    //    break;
-                    ////修改栏目
+                    //添加栏目
+                    case "addSortModel":
+                        new AjaxSort().AddSortModel();
+                        break;
+                    case "getSortModel":
+                        new AjaxSort().GetSortModel();
+                        break;
+                    //修改栏目
                     //case "UpdateSortModel":
                     //    new AjaxSort().UpdateSortModel();
                     //    break;
-                    ////删除栏目（子级栏目将一起删除）
-                    //case "DelSortModel":
-                    //    new AjaxSort().DeleteSortModel();
-                    //    break;
+                    //删除栏目（子级栏目将一起删除）
+                    case "deleteSort":
+                        new AjaxSort().DeleteSort();
+                        break;
                     #endregion
 
                     #region 数据字典管理

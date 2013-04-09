@@ -55,7 +55,7 @@
 				<div title="内容管理" style="padding:10px 10px 10px 20px;">
 					<ul class="menuUL">
                         <li><a href="javascript:add('NewsList'))">新闻资讯管理</a></li>
-                        <li><a href="javascript:add('ProductList')">公司产品管理</a></li>
+                        <li><a href="javascript:add('GoodsList')">公司产品管理</a></li>
                         <li><a href="javascript:add('CaseList')">成功案例管理</a></li>
                         <li><a href="javascript:add('DownloadList')">资料下载管理</a></li>
                         <li><a href="javascript:add('JobList')">招聘信息管理</a></li>

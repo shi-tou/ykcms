@@ -77,7 +77,7 @@ function formatRMB(num) {
     return (((sign) ? '' : '-') + num + '.' + cents);
 }
 //对每一个请求的URL进行处理，确保每一次请求都是新的,
-//否则Url相同视为相同请求，浏览器则不执行，而是返回上一次请求结果（避免缓存问题
+//否则Url相同视为相同请求，浏览器则不执行，而是返回上一次请求结果（避免缓存问题)
 function dealAjaxUrl(url) {
     var guid = GetGuid();
     var ajaxurl;
