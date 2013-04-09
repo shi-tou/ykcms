@@ -5,6 +5,7 @@ using YK.Common;
 using YK.Model;
 using YK.DALFactory;
 using YK.IDAL;
+using YK.DBUtility;
 namespace YK.BLL
 {
     /// <summary>
@@ -78,7 +79,6 @@ namespace YK.BLL
         /// </summary>
         public YK.Model.SortInfo GetModel(int SortID)
         {
-
             return dal.GetModel(SortID);
         }
 
@@ -203,6 +203,16 @@ namespace YK.BLL
         public DataSet GetAllList()
         {
             return GetList("");
+        }
+        /// <summary>
+        /// 获得数据列表
+        /// </summary>
+        public DataTable GetSortFroJoin(string sqlWhere)
+        {
+            string sql = "select * from v_SortForJoin ";//查询视图
+            if (sqlWhere != "")
+                sql += " where " + sqlWhere;
+            return DbHelperSQL.Query(sql).Tables[0];
         }
 
         /// <summary>

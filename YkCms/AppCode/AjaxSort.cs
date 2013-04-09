@@ -106,9 +106,8 @@ namespace YkCms.AppCode
         public void GetSortModel()
         {
             int sortid = RequestHelper.GetRequestInt("sortid", 0);
-            SortInfo sinfo = sort.GetModelByCache(sortid);
-            //AjaxMsg.msg = "\"msg\":{\"SortID\":" + sinfo.SortID + ",\"SortName\":\"" + sinfo.SortName + "\",\"SortDesc\":\"" + sinfo.SortDesc + "\",\"AdminName\":\"" +
-            //    sinfo.AdminName + "\",\"CreateTime\":\"" + sinfo.CreateTime + "\"}";
+            DataTable dt = sort.GetSortFroJoin("SortID=" + sortid.ToString());
+            AjaxMsg.msg = "\"msg\":" + JsonHelper.ToJson(dt, "").Replace("[","").Replace("]","");
         }
         /// <summary>
         /// 查询栏目

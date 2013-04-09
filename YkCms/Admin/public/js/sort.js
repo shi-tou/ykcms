@@ -11,6 +11,7 @@ var sorttoolbar = [{
         $('#sortWin').window({
             title: '添加栏目',
             closed: false,
+            shadow:false,
             onClose: function () {
                 clearSortForm();
             }
@@ -57,14 +58,28 @@ function getSortList() {
 }
 //清空栏目表单
 function clearSortForm() {
-    $('#sort-sortid').val('');
-    $('#sort-sortname').val('');
-    $('#sort-sortdesc').val('');
+    $('#sortlist-parentid').val(0);
+    $('#sortlist-sortname').val('');
+    $('#sortlist-sorturl').val('');
+    $('#sortlist-sortattributeid').val(0);
+    $('#sortlist-sorttemplateid').val(0);
+    $('#sortlist-bannerurl').val('');
+    $('#sortlist-pagetitle').val('');
+    $('#sortlist-pagekeywords').val('');
+    $('#sortlist-pagedesc').val('');
 }
 //栏目添加
 function addSortModel() {
-    var data;
+
     if ($('#sortForm').form('validate')) {
+        if ($('#sortlist-sortattributeid').val() == "0") {
+            alertInfo('操作提示', '请选择栏目属性');
+            return;
+        }
+        if ($('#sortlist-sorttemplateid').val() == "0") {
+            alertInfo('操作提示', '请选择栏目模板');
+            return;
+        }
         $.ajax({
             url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: 'action=addSortModel&' + $('#sortForm').serialize(),
@@ -96,9 +111,20 @@ function getSortModel() {
             type: 'POST',
             success: function (data) {
                 if (data.msgOK) {
-                    $('#sort-sortid').val(data.msg.SortID);
-                    $('#sort-sortname').val(data.msg.SortName);
-                    $('#sort-sortdesc').val(data.msg.SortDesc);
+                    $('#sortlist-parentid').val(data.msg.ParentID);
+                    $('#sortlist-sortid').val(data.msg.SortID);
+                    $('#sortlist-sortname').val(data.msg.SortName);
+                    $('#sortlist-sorturl').val(data.msg.SortUrl);
+                    $('#sortlist-sortattributeid').val(data.msg.SortAttributeID);
+                    $('#sortlist-sorttemplateid').val(data.msg.SortTemplateID);
+                    $('#sortlist-bannerurl').val(data.msg.BannerUrl);
+                    if (data.msg.State = 0)
+                        $('#sortlist-close').attr("checked", "checked");
+                    else
+                        $('#sortlist-open').attr("checked", "checked");
+                    $('#sortlist-pagetitle').val(data.msg.PageTitle);
+                    $('#sortlist-pagekeywords').val(data.msg.PageKeywords);
+                    $('#sortlist-pagedesc').val(data.msg.PageDesc);
                 }
                 else {
                     alertError('错误提示', data.ex);
@@ -116,7 +142,8 @@ function getSortModel() {
     }
     $('#sortWin').window({
         title: '修改栏目',
-        closed: false
+        closed: false,
+        shadow:false
     });
 }
 //删除栏目

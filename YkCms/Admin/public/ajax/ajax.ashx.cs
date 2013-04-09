@@ -160,14 +160,14 @@ namespace YkCms.ajax
                     case "getSortList":
                         new AjaxSort().GetSortList();
                         break;
-                    ////添加栏目
-                    //case "AddSortModel":
-                    //    new AjaxSort().AddSortModel();
-                    //    break;
-                    //case "GetSortModel":
-                    //    new AjaxSort().GetSortModel();
-                    //    break;
-                    ////修改栏目
+                    //添加栏目
+                    case "addSortModel":
+                        new AjaxSort().AddSortModel();
+                        break;
+                    case "getSortModel":
+                        new AjaxSort().GetSortModel();
+                        break;
+                    //修改栏目
                     //case "UpdateSortModel":
                     //    new AjaxSort().UpdateSortModel();
                     //    break;
