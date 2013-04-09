@@ -87,8 +87,8 @@ namespace YkCms.AppCode
         /// </summary>
         public void GetSortList()
         {
-            DataSet ds = sort.GetAllList();
-            AjaxMsg.msg = "\"rows\":" + JsonHelper.ToJson(ds.Tables[0], "") + ",\"total\":" + ds.Tables[0].Rows.Count;
+            DataTable dt = sort.GetSortFroJoin("");
+            AjaxMsg.msg = "\"rows\":" + JsonHelper.ToJson(dt, "") + ",\"total\":" + dt.Rows.Count;
         }
         /// <summary>
         /// 删除栏目
@@ -96,8 +96,8 @@ namespace YkCms.AppCode
         public void DeleteSort()
         {
             string sortids = RequestHelper.GetRequestStr("sortids", "0");
-            sort.DeleteList(sortids);
-            log.Add(new SysLogInfo("栏目管理", "删除", "删除了编号为【" + sortids + "】的栏目信息", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
+            sort.DeleteAllSort(sortids);
+            log.Add(new SysLogInfo("栏目管理", "删除", "删除了编号为【" + sortids + "】的栏目及其子类信息", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
             AjaxMsg.msg = "\"msg\":\"删除成功\"";
         }
         /// <summary>
@@ -106,9 +106,8 @@ namespace YkCms.AppCode
         public void GetSortModel()
         {
             int sortid = RequestHelper.GetRequestInt("sortid", 0);
-            SortInfo sinfo = sort.GetModelByCache(sortid);
-            //AjaxMsg.msg = "\"msg\":{\"SortID\":" + sinfo.SortID + ",\"SortName\":\"" + sinfo.SortName + "\",\"SortDesc\":\"" + sinfo.SortDesc + "\",\"AdminName\":\"" +
-            //    sinfo.AdminName + "\",\"CreateTime\":\"" + sinfo.CreateTime + "\"}";
+            DataTable dt = sort.GetSortFroJoin("SortID=" + sortid.ToString());
+            AjaxMsg.msg = "\"msg\":" + JsonHelper.ToJson(dt, "").Replace("[","").Replace("]","");
         }
         /// <summary>
         /// 查询栏目

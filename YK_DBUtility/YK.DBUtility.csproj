@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandInfo.cs" />
+    <Compile Include="CommonDbHelper.cs" />
     <Compile Include="DbHelperOleDb.cs" />
     <Compile Include="DbHelperSQL.cs" />
     <Compile Include="DbHelperSQLP.cs" />

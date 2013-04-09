@@ -11,6 +11,7 @@ var sorttoolbar = [{
         $('#sortWin').window({
             title: '添加栏目',
             closed: false,
+            shadow:false,
             onClose: function () {
                 clearSortForm();
             }
@@ -44,7 +45,9 @@ function getSortList() {
         columns: [[
             { field: 'SortID', width: 30, align: '', checkbox: true },
             { field: 'SortName', title: '栏目名称', width: 150, align: 'center' },
-            { field: 'SortUrl', title: '栏目描述', width: 300, align: 'center' },
+            { field: 'SortUrl', title: '栏目链接', width: 300, align: 'center' },
+            { field: 'SortAttributeName', title: '栏目属性', width: 100, align: 'center' },
+            { field: 'TemplateName', title: '栏目模板', width: 100, align: 'center' },
             { field: 'PageTitle', title: '页面标题', width: 100, align: 'center' },
             { field: 'PageKeywords', title: '页面关键字', width: 150, align: 'center' },
             { field: 'PageDesc', title: '页面描述', width: 150, align: 'center' }
@@ -57,13 +60,27 @@ function getSortList() {
 }
 //清空栏目表单
 function clearSortForm() {
-    $('#sort-sortid').val('');
-    $('#sort-sortname').val('');
-    $('#sort-sortdesc').val('');
+    $('#sortlist-parentid').val(0);
+    $('#sortlist-sortname').val('');
+    $('#sortlist-sorturl').val('');
+    $('#sortlist-sortattributeid').val(0);
+    $('#sortlist-sorttemplateid').val(0);
+    $('#sortlist-bannerurl').val('');
+    $('#sortlist-pagetitle').val('');
+    $('#sortlist-pagekeywords').val('');
+    $('#sortlist-pagedesc').val('');
 }
 //栏目添加
 function addSortModel() {
     if ($('#sortForm').form('validate')) {
+        if ($('#sortlist-sortattributeid').val() == "0") {
+            alertInfo('操作提示', '请选择栏目属性');
+            return;
+        }
+        if ($('#sortlist-sorttemplateid').val() == "0") {
+            alertInfo('操作提示', '请选择栏目模板');
+            return;
+        }
         $.ajax({
             url: dealAjaxUrl('../public/ajax/ajax.ashx'),
             data: 'action=addSortModel&' + $('#sortForm').serialize(),
@@ -95,9 +112,20 @@ function getSortModel() {
             type: 'POST',
             success: function (data) {
                 if (data.msgOK) {
-                    $('#sort-sortid').val(data.msg.SortID);
-                    $('#sort-sortname').val(data.msg.SortName);
-                    $('#sort-sortdesc').val(data.msg.SortDesc);
+                    $('#sortlist-parentid').val(data.msg.ParentID);
+                    $('#sortlist-sortid').val(data.msg.SortID);
+                    $('#sortlist-sortname').val(data.msg.SortName);
+                    $('#sortlist-sorturl').val(data.msg.SortUrl);
+                    $('#sortlist-sortattributeid').val(data.msg.SortAttributeID);
+                    $('#sortlist-sorttemplateid').val(data.msg.SortTemplateID);
+                    $('#sortlist-bannerurl').val(data.msg.BannerUrl);
+                    if (data.msg.State = 0)
+                        $('#sortlist-close').attr("checked", "checked");
+                    else
+                        $('#sortlist-open').attr("checked", "checked");
+                    $('#sortlist-pagetitle').val(data.msg.PageTitle);
+                    $('#sortlist-pagekeywords').val(data.msg.PageKeywords);
+                    $('#sortlist-pagedesc').val(data.msg.PageDesc);
                 }
                 else {
                     alertError('错误提示', data.ex);
@@ -115,7 +143,8 @@ function getSortModel() {
     }
     $('#sortWin').window({
         title: '修改栏目',
-        closed: false
+        closed: false,
+        shadow:false
     });
 }
 //删除栏目
@@ -141,7 +170,7 @@ function deleteSort() {
                             getSortList();
                         }
                         else {
-                            lertError('错误提示', data.ex);
+                            alertError('错误提示', data.ex);
                         }
                     }
                 });

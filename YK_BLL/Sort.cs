@@ -5,6 +5,7 @@ using YK.Common;
 using YK.Model;
 using YK.DALFactory;
 using YK.IDAL;
+using YK.DBUtility;
 namespace YK.BLL
 {
     /// <summary>
@@ -72,13 +73,19 @@ namespace YK.BLL
         {
             return dal.DeleteList(SortIDlist);
         }
+        /// <summary>
+        /// 批量删除数据(其子类也将删除)
+        /// </summary>
+        public bool DeleteAllSort(string SortIDlist)
+        {
+            return CommonDbHelper.DeleteAllChilds("Sort", "SortID", "ParentID", "SortID in (" + SortIDlist + ")");
+        }
 
         /// <summary>
         /// 得到一个对象实体
         /// </summary>
         public YK.Model.SortInfo GetModel(int SortID)
         {
-
             return dal.GetModel(SortID);
         }
 
@@ -157,8 +164,7 @@ namespace YK.BLL
                     if (dt.Rows[n]["SortTemplateID"] != null && dt.Rows[n]["SortTemplateID"].ToString() != "")
                     {
                         model.SortTemplateID = Convert.ToInt16(dt.Rows[n]["SortTemplateID"].ToString());
-                    }
-                    
+                    }                   
                     if (dt.Rows[n]["PageTitle"] != null && dt.Rows[n]["PageTitle"].ToString() != "")
                     {
                         model.PageTitle = dt.Rows[n]["PageTitle"].ToString();
@@ -203,6 +209,16 @@ namespace YK.BLL
         public DataSet GetAllList()
         {
             return GetList("");
+        }
+        /// <summary>
+        /// 获得数据列表
+        /// </summary>
+        public DataTable GetSortFroJoin(string sqlWhere)
+        {
+            string sql = "select * from v_SortForJoin ";//查询视图
+            if (sqlWhere != "")
+                sql += " where " + sqlWhere;
+            return DbHelperSQL.Query(sql).Tables[0];
         }
 
         /// <summary>
