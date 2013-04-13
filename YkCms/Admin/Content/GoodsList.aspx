@@ -1,0 +1,80 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GoodsList.aspx.cs" Inherits="YkCms.Content.GoodsList" %>
+<html>
+    <head>
+        <title></title>
+        <link href="/jquery-easyui-1.3.2/themes/default/easyui.css" rel="stylesheet" type="text/css" />
+        <link href="/jquery-easyui-1.3.2/themes/icon.css" rel="stylesheet" type="text/css" />
+        <link href="../public/css/admin.css" rel="stylesheet" type="text/css" />
+        <script src="/jquery-easyui-1.3.2/jquery-1.8.0.min.js" type="text/javascript"></script>
+        <script src="/jquery-easyui-1.3.2/jquery.easyui.min.js" type="text/javascript"></script>
+        <script src="../public/js/customValidate.js" type="text/javascript"></script>
+        <script src="../public/js/msgbox.js" type="text/javascript"></script>
+        <script src="../public/js/common.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(function () {
+                getGoodsList();
+            });
+        </script>
+    </head>
+    <body>
+        <div class="main">
+            <!--start 搜索-->
+            <div class="easyui-panel search" title="条件搜索">
+                <table>
+                    <tr>
+                        <td>类别：</td>
+                        <td><select><%=SortSelectHtml %></select></td>
+                        <td>添加时间：</td>
+                        <td><input id="search-sortlist-starttime" name="search-sortlist-starttime" class="easyui-datebox" />-<input id="search-sortlist-endtime" name="search-sortlist-endtime" class="easyui-datebox" /></td>
+                        <td><a class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchSort();">查询</a></td>
+                    </tr>
+                </table>
+            </div>
+            <!--end 搜索-->
+            <!--start 占位-->
+            <div class="blank"></div>
+            <!--end 占位-->
+            <!--start 列表-->
+            <table id="sortList">
+	        </table>
+            <!--end 列表-->
+            <!--start 表单窗口-->
+            <div id="sortWin" class="easyui-window" title="添加栏目" data-options="iconCls:'icon-save',modal:true,top:'20px',closed:true,minimizable:false,maximizable:false,collapsible:false" >
+                <form id="sortForm">
+                <input id="sortlist-sortid" name="sortlist-sortid" type="hidden" />
+                <div class="easyui-tabs" data-options="border:false">
+		            <div title="基本信息" style="padding:10px">
+                        <dl>
+                            <dt>栏目名称:</dt>
+                            <dd><input class="easyui-validatebox" type="text" id="sortlist-sortname" name="sortlist-sortname" data-options="required:true" missingmessage="请输入栏目名称！" validtype="checkSortName" /></dd>
+                            <dt>栏目URL:</dt>
+                            <dd><input class="easyui-validatebox" type="text" id="sortlist-sorturl" name="sortlist-sorturl"/></dd>
+                            
+                            <dt>栏目Banner:</dt>
+                            <dd><input class="easyui-validatebox" id="sortlist-bannerurl" name="sortlist-bannerurl" /></dd>
+                            <dt>状态:</dt>
+                            <dd><input type="radio" id="sortlist-open" name="sortlist-state" value="1" checked="checked" />启用<input type="radio" id="sortlist-close" name="sortlist-state" value="0" />禁用</dd>
+                        </dl>
+		            </div>
+		            <div title="SEO信息" style="padding:10px">
+                        <dl>
+                            <dt>页面标题:</dt>
+                            <dd><textarea id="sortlist-pagetitle" name="sortlist-pagetitle" class="textarea"></textarea></dd>
+                            <dt>页面关键词:</dt>
+                            <dd><textarea id="sortlist-pagekeywords" name="sortlist-pagekeywords" class="textarea"></textarea></dd>
+                            <dt>页面描述:</dt>
+                            <dd><textarea id="sortlist-pagedesc" name="sortlist-pagedesc" class="textarea"></textarea></dd>
+                        </dl>
+		            </div>
+	            </div>            
+                </form>
+                <div class="blank"></div>
+                <div style="text-align: center; padding: 5px">
+                    <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="addSortModel();" >确 定</a>
+                    <a class="easyui-linkbutton" data-options="iconCls:'icon-no'" onclick="cancelSortWin();" >取 消</a>
+                </div>
+            </div>
+            <!--end 表单窗口-->
+        </div>
+    </body>
+</html>
