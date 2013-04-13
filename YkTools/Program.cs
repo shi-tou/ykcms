@@ -14,7 +14,7 @@ namespace YkTools
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SpinImage());
+            Application.Run(new Form1());
         }
     }
 }

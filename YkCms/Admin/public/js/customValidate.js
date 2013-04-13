@@ -63,6 +63,12 @@ $.extend($.fn.validatebox.defaults.rules, {
         },
         message: '请输入数字'
     },
+    money: {
+        validator: function (value, param) {
+            return /^(([1-9]\d*)|\d)(\.\d{1,2})?$/.test(value);
+        },
+        message: '请输入正确的金额'
+    },
     idcard: {
         validator: function (value, param) {
             return idCard(value);

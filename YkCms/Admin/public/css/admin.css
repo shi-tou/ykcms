@@ -52,3 +52,8 @@
 #templateForm dt{float:left;padding:12px 0 4px;width:100px; text-align:right; margin:0px;}
 #templateForm dd{text-align:left;height:auto;padding:8px 0;margin-left:5px; }
 templateWin0{width:800px;}
+/*产品*/
+#goodsWin{ width:450px;}
+#goodsWin dl{padding-left:14px; }
+#goodsWin dt{float:left;padding:12px 0 4px;width:100px; text-align:right; margin:0px;}
+#goodsWin dd{text-align:left;height:auto;padding:8px 0;margin-left:5px; }

@@ -57,6 +57,7 @@
     <Content Include="Admin\public\js\admin.js" />
     <Content Include="Admin\index.aspx" />
     <Content Include="Admin\public\js\common.js" />
+    <Content Include="Admin\public\js\goods.js" />
     <Content Include="Admin\public\js\menu.js" />
     <Content Include="Admin\Login.aspx" />
     <Content Include="Admin\public\js\group.js" />
@@ -1604,6 +1605,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AppCode\AjaxAdmin.cs" />
+    <Compile Include="AppCode\AjaxGoods.cs" />
     <Compile Include="AppCode\AjaxMsg.cs" />
     <Compile Include="AppCode\Function.cs" />
     <Compile Include="AppCode\AjaxGroup.cs" />

@@ -200,17 +200,6 @@ namespace YkCms.ajax
                     //    break;
                     #endregion
 
-                    #region 系统操作日志
-                    ////获取日志列表
-                    //case "GetSysLogList":
-                    //    new AjaxSysLog().GetSysLogList();
-                    //    break;
-                    ////删除日志
-                    //case "DelSysLogList":
-                    //    new AjaxSysLog().DelSysLogList();
-                    //    break;
-                    #endregion
-
                     #region 新闻管理
                     ////获取新闻类别列表
                     //case "GetNewsTypeList":
@@ -251,42 +240,12 @@ namespace YkCms.ajax
                     #endregion
 
                     #region 产品管理
-                    ////获取产品类别列表
-                    //case "GetProductTypeList":
-                    //    new AjaxProducts().GetProductTypeList();
-                    //    break;
-                    ////添加产品类别
-                    //case "AddProductTypeModel":
-                    //    new AjaxProducts().AddProductTypeModel();
-                    //    break;
-                    ////批量删除新闻类别
-                    //case "DelProductTypeList":
-                    //    new AjaxProducts().DelProductTypeList();
-                    //    break;
-                    ////获取新闻类别信息
-                    //case "GetProductTypeModel":
-                    //    new AjaxProducts().GetProductTypeModel();
-                    //    break;
-                    ////修改新闻类别信息
-                    //case "EditProductTypeModel":
-                    //    new AjaxProducts().EditProductTypeModel();
-                    //    break;
-                    ////分页获取产品列表
-                    //case "GetProductsList":
-                    //    new AjaxProducts().GetProductsList();
-                    //    break;
-                    ////添加产品
-                    //case "AddProductsModel":
-                    //    new AjaxProducts().AddProductsModel();
-                    //    break;
-                    ////批量删除产品
-                    //case "DelProductsList":
-                    //    new AjaxProducts().DelProductsList();
-                    //    break;
-                    ////修改产品
-                    //case "EditProductsModel":
-                    //    new AjaxProducts().EditProductsModel();
-                    //    break;
+                    case "getGoodsList":
+                        new AjaxGoods().GetSortList();
+                        break;
+                    case "addGoodsModel":
+                        new AjaxGoods().AddGoodsModel();
+                        break;
                     #endregion
 
                     #region 友链管理

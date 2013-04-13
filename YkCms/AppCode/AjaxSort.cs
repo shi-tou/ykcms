@@ -148,15 +148,54 @@ namespace YkCms.AppCode
         /// <summary>
         /// 获取指定父类栏目信息，并返回select的HTML
         /// </summary>
+        //public string GetSortSelectHtmlByID(int ParentID)
+        //{
+        //    StringBuilder sbHtml = new StringBuilder();
+        //    DataSet ds = sort.GetAllSort("ParentID=" + ParentID);
+        //    foreach (DataRow dr in ds.Tables[0].Rows)
+        //    {
+        //        sbHtml.Append("<option value=\"" + dr["SortID"].ToString() + "\">" + dr["SortName"].ToString() + "</option>");
+        //    }
+        //    return sbHtml.ToString();
+        //}
+        #region 绑定栏目到下拉菜单
+        /// <summary>
+        /// 绑定栏目到下拉菜单
+        /// </summary>
+        /// <param name="select"></param>
+        /// <param name="condition"></param>
+        /// <param name="hasEmpty"></param>
         public string GetSortSelectHtmlByID(int ParentID)
         {
             StringBuilder sbHtml = new StringBuilder();
-            DataSet ds = sort.GetAllSort("ParentID=" + ParentID);
-            foreach (DataRow dr in ds.Tables[0].Rows)
-            {
-                sbHtml.Append("<option value=\"" + dr["SortID"].ToString() + "\">" + dr["SortName"].ToString() + "</option>");
-            }
+            DataTable dt = sort.GetAllSort("ParentID=" + ParentID).Tables[0];           
+            int index = 0;
+            //处理数据源
+            CreateSortItem(ref sbHtml, ref index, dt, ParentID.ToString());
+            //绑定数据源
             return sbHtml.ToString();
         }
+        /// <summary>
+        /// 递归创建下拉菜单的项目(进行分级处理）
+        /// </summary>
+        private static void CreateSortItem(ref StringBuilder sbHtml, ref int index, DataTable dt, string pid)
+        {
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (dr["ParentID"].ToString() != pid)
+                    continue;
+                string blank = "";
+                for (int i = 0; i < index; i++)
+                {
+                    if (index != 0)
+                        blank += "--";
+                }
+                sbHtml.Append("<option value=\"" + dr["SortID"].ToString() + "\">" + blank + dr["SortName"].ToString() + "</option>");
+                index++;
+                CreateSortItem(ref sbHtml, ref index, dt, dr["SortID"].ToString());
+                index--;
+            }
+        }
+        #endregion
     }
 }
