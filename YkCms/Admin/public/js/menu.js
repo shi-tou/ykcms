@@ -226,7 +226,7 @@ function addTab(title,url,closable) {
     $('#nav_tabs').tabs('add', {
         title: title,
         closable: closable,
-        content: "<iframe scrolling=\"no\" frameborder=\"0\" src=\"" + url + "\" style=\"width:100%;\" onload=\"Javascript:SetWinHeight(this,450);\"></iframe>"
+        content: "<iframe scrolling=\"auto\" frameborder=\"0\" src=\"" + url + "\" style=\"width:100%;\" onload=\"Javascript:SetWinHeight(this,450);\"></iframe>"
     });
 }
 //选项卡是否存在，存在则选中并返回true,不存在则

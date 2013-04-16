@@ -246,6 +246,9 @@ namespace YkCms.ajax
                     case "addGoodsModel":
                         new AjaxGoods().AddGoodsModel();
                         break;
+                    case "deleteGoods":
+                        new AjaxGoods();
+                        break;
                     #endregion
 
                     #region 友链管理

@@ -51,6 +51,7 @@
     <Content Include="Admin\public\ajax\ValidateImage.aspx" />
     <Content Include="Admin\public\css\admin.css" />
     <Content Include="Admin\public\css\login.css" />
+    <Content Include="Admin\public\images\btn_upload.gif" />
     <Content Include="Admin\public\js\AjaxCommon.js" />
     <Content Include="Admin\public\js\base64.js" />
     <Content Include="Admin\public\js\customValidate.js" />
@@ -997,6 +998,14 @@
     <Content Include="ckfinder\skins\v1\uipanel.css" />
     <Content Include="ckfinder\translations.txt" />
     <Content Include="Default.aspx" />
+    <Content Include="Admin\public\uploadify\cancel.png" />
+    <Content Include="Admin\public\uploadify\expressInstall.swf" />
+    <Content Include="Admin\public\uploadify\jquery.uploadify.v2.1.0.js" />
+    <Content Include="Admin\public\uploadify\jquery.uploadify.v2.1.0.min.js" />
+    <Content Include="Admin\public\uploadify\swfobject.js" />
+    <Content Include="Admin\public\uploadify\uploadify.allglyphs.swf" />
+    <Content Include="Admin\public\uploadify\uploadify.css" />
+    <Content Include="Admin\public\uploadify\uploadify.swf" />
     <Content Include="jquery-easyui-1.3.2\changelog.txt" />
     <Content Include="jquery-easyui-1.3.2\demo\accordion\actions.html" />
     <Content Include="jquery-easyui-1.3.2\demo\accordion\ajax.html" />
@@ -1623,7 +1632,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin\public\images\" />
     <Folder Include="Admin\Seo\" />
     <Folder Include="App_Data\" />
     <Folder Include="files\images\" />
@@ -1676,6 +1684,9 @@
     <None Include="ckeditor\.htaccess" />
     <None Include="ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <None Include="ckfinder\userfiles\.htaccess" />
+    <None Include="Admin\public\uploadify\check.php" />
+    <None Include="Admin\public\uploadify\uploadify.fla" />
+    <None Include="Admin\public\uploadify\uploadify.php" />
     <None Include="jquery-easyui-1.3.2\demo\accordion\datagrid_data1.json" />
     <None Include="jquery-easyui-1.3.2\demo\combobox\combobox_data1.json" />
     <None Include="jquery-easyui-1.3.2\demo\combogrid\datagrid_data1.json" />

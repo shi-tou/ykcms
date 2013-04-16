@@ -65,5 +65,15 @@ namespace YkCms.AppCode
             DataTable dt = goods.GetGoodsFroJoin("");
             AjaxMsg.msg = "\"rows\":" + JsonHelper.ToJson(dt, "") + ",\"total\":" + dt.Rows.Count;
         }
+        /// <summary>
+        /// 删除管理员
+        /// </summary>
+        public void DeleteGoods()
+        {
+            string goodsids = RequestHelper.GetRequestStr("goodsids", "0");
+            goods.DeleteList(goodsids);
+            new SysLog().Add(new SysLogInfo("产品管理", "删除", "删除了编号为【" + goodsids + "】的产品信息。", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
+            AjaxMsg.msg = "\"msg\":\"删除成功\"";
+        }   
     }
 }

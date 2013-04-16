@@ -9,7 +9,7 @@
         <script src="../public/js/customValidate.js" type="text/javascript"></script>
         <script src="../public/js/msgbox.js" type="text/javascript"></script>
         <script src="../public/js/common.js" type="text/javascript"></script>
-        <script src="public/js/admin.js" type="text/javascript"></script>
+        <script src="../public/js/admin.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(function () {
                 getAdminList();

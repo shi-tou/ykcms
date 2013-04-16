@@ -2,6 +2,33 @@
 产品操作类
 */
 $(function () {
+    //上传插件
+    $("#image_upload").uploadify({
+        'uploader': '../public/uploadify/uploadify.swf',
+        'script': '../public/ajax/UploadHandler.ashx',
+        'cancelImg': '../public/uploadify/cancel.png',
+        'folder': '/Files/UploadFile/',
+        'queueID': 'queueDiv',
+        'buttonImg': "../public/images/btn_upload.gif",
+        'height': 23,
+        'width': 70,
+        'fileExt': "*.jpg;*.jpeg;*.gif;*.png;*.bmp",
+        'fileDesc': "请选择格式为GIF、JPG、PNG或BMP的图片",
+        'auto': false,
+        'multi': false,
+        'sizeLimit': 512000,
+        'onError': function (event, ID, fileObj, errorObj) {
+            if (errorObj.type == "File Size")
+                alert("对不起，上传的图片不能超过500K");
+            else
+                alert(errorObj.type + ' Error: ' + errorObj.info);
+        },
+        'onComplete': function (event, ID, fileObj, response, data) {
+            if (response != "0") {
+                $("#image").val(response);
+            }
+        }
+    });
 });
 //操作栏
 var goodstoolbar = [{
