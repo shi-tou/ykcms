@@ -91,12 +91,15 @@ namespace YkCms.ajax
                     #endregion
 
                     #region 日志管理
+                    //获取日志列表
                     case "getSyslogList":
                         new AjaxSyslog().GetSyslogList();
                         break;
+                    //删除日志
                     case "deleteSyslog":
                         new AjaxSyslog().DeleteSyslog();
                         break;
+                    //搜索日志
                     case "searchSyslog":
                         new AjaxSyslog().SearchSyslog();
                         break;
@@ -153,6 +156,7 @@ namespace YkCms.ajax
                     #endregion
 
                     #region 栏目管理
+                    //检查栏目名
                     case "checkSortName":
                         new AjaxSort().CheckSortName();
                         break;
@@ -164,6 +168,7 @@ namespace YkCms.ajax
                     case "addSortModel":
                         new AjaxSort().AddSortModel();
                         break;
+                    //获取栏目单个信息
                     case "getSortModel":
                         new AjaxSort().GetSortModel();
                         break;
@@ -240,14 +245,20 @@ namespace YkCms.ajax
                     #endregion
 
                     #region 产品管理
+                    //获取产品列表
                     case "getGoodsList":
-                        new AjaxGoods().GetSortList();
+                        new AjaxGoods().GetGoodsList();
                         break;
+                    //添加产品
                     case "addGoodsModel":
                         new AjaxGoods().AddGoodsModel();
                         break;
+                    //删除产品
                     case "deleteGoods":
-                        new AjaxGoods();
+                        new AjaxGoods().DeleteGoods();
+                        break;
+                    case "getGoodsModel":
+                        new AjaxGoods().GetGoodsModel();
                         break;
                     #endregion
 

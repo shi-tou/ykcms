@@ -65,7 +65,7 @@
                     </tr>
                     <tr>
                         <td class="r">产品折扣:</td>
-                        <td><input class="easyui-validatebox" id="disocout" name="disocout" value="0" data-options="required:true" missingmessage="请输入产品折扣！" validtype="number" /></td>
+                        <td><input class="easyui-validatebox" id="discount" name="discount" value="0" data-options="required:true" missingmessage="请输入产品折扣！" validtype="number" /></td>
                     </tr>
                     <tr>
                         <td class="r">产品数量:</td>

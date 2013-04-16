@@ -74,7 +74,7 @@ function getGoodsList() {
             { field: 'GoodsName', title: '产品名称', width: 150, align: 'center' },
             { field: 'GoodsUnit', title: '单位', width: 50, align: 'center' },
             { field: 'SortName', title: '类别', width: 60, align: 'center' },
-            { field: 'Price', title: '单价', width: 100, align: 'center' },
+            { field: 'Price', title: '单价', width: 100, align: 'center', formatter: formatMoney },
             { field: 'Discount', title: '折扣', width: 100, align: 'center' },
             { field: 'Count', title: '数量', width: 80, align: 'center' },
             { field: 'Describe', title: '描述', width: 150, align: 'center' },
@@ -86,6 +86,10 @@ function getGoodsList() {
         queryParams: { 'action': 'getGoodsList' }, //查询参数
         toolbar: goodstoolbar
     });
+}
+//格式化权限组名
+function formatMoney(val, row) {
+    return formatRMB(val);
 }
 //清空产品表单
 function clearGoodsForm() {
@@ -133,20 +137,14 @@ function getGoodsModel() {
             type: 'POST',
             success: function (data) {
                 if (data.msgOK) {
-                    $('#goodslist-parentid').val(data.msg.ParentID);
-                    $('#goodslist-goodsid').val(data.msg.GoodsID);
-                    $('#goodslist-goodsname').val(data.msg.GoodsName);
-                    $('#goodslist-goodsurl').val(data.msg.GoodsUrl);
-                    $('#goodslist-goodsattributeid').val(data.msg.GoodsAttributeID);
-                    $('#goodslist-goodstemplateid').val(data.msg.GoodsTemplateID);
-                    $('#goodslist-bannerurl').val(data.msg.BannerUrl);
-                    if (data.msg.State = 0)
-                        $('#goodslist-close').attr("checked", "checked");
-                    else
-                        $('#goodslist-open').attr("checked", "checked");
-                    $('#goodslist-pagetitle').val(data.msg.PageTitle);
-                    $('#goodslist-pagekeywords').val(data.msg.PageKeywords);
-                    $('#goodslist-pagedesc').val(data.msg.PageDesc);
+                    $('#goodsid').val(data.msg.GoodsID);
+                    $('#goodsname').val(data.msg.GoodsName);
+                    $('#unit').val(data.msg.Unit);
+                    $('#price').val(data.msg.Price);
+                    $('#discount').val(data.msg.Discount);
+                    $('#count').val(data.msg.Count);
+                    $('#image').val(data.msg.Image);
+                    $('#describe').val(data.msg.Describe);
                 }
                 else {
                     alertError('错误提示', data.ex);

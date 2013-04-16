@@ -28,7 +28,7 @@ namespace YkCms.AppCode
             string goodsname = RequestHelper.GetRequestStr("goodsname", "");
             string unit = RequestHelper.GetRequestStr("unit", "");
             string price = RequestHelper.GetRequestStr("price", "");
-            int disocout = RequestHelper.GetRequestInt("disocout", 0);
+            int disocout = RequestHelper.GetRequestInt("discount", 0);
             int count = RequestHelper.GetRequestInt("count", 0);
             string image = RequestHelper.GetRequestStr("image", "");
             string describe = RequestHelper.GetRequestStr("describe", "");                      
@@ -60,7 +60,7 @@ namespace YkCms.AppCode
         /// <summary>
         /// 获取产品列表
         /// </summary>
-        public void GetSortList()
+        public void GetGoodsList()
         {
             DataTable dt = goods.GetGoodsFroJoin("");
             AjaxMsg.msg = "\"rows\":" + JsonHelper.ToJson(dt, "") + ",\"total\":" + dt.Rows.Count;
@@ -74,6 +74,24 @@ namespace YkCms.AppCode
             goods.DeleteList(goodsids);
             new SysLog().Add(new SysLogInfo("产品管理", "删除", "删除了编号为【" + goodsids + "】的产品信息。", Function.GetIP(), adminInfo.AdminID, adminInfo.AdminName, DateTime.Now));
             AjaxMsg.msg = "\"msg\":\"删除成功\"";
-        }   
+        }
+        /// <summary>
+        /// 删除管理员
+        /// </summary>
+        public void GetGoodsModel()
+        {
+            string goodsid = RequestHelper.GetRequestStr("goodsid", "0");
+            DataTable dt=goods.GetList("GoodsID=" + goodsid).Tables[0];
+            if (dt.Rows.Count == 1)
+            {
+                AjaxMsg.msg = "\"msg\":" + JsonHelper.ToJson(dt, "").Replace("[", "").Replace("]", "") ;
+            }
+            else
+            {
+                AjaxMsg.msgOK = false;
+                AjaxMsg.ex = "\"msg\":\"数据不存在！\"";
+            }
+            
+        }
     }
 }
