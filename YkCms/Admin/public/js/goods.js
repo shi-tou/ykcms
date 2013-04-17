@@ -140,7 +140,7 @@ function getGoodsModel() {
                     $('#goodsid').val(data.msg.GoodsID);
                     $('#goodsname').val(data.msg.GoodsName);
                     $('#unit').val(data.msg.Unit);
-                    $('#price').val(data.msg.Price);
+                    $('#price').val(formatRMB(data.msg.Price));
                     $('#discount').val(data.msg.Discount);
                     $('#count').val(data.msg.Count);
                     $('#image').val(data.msg.Image);

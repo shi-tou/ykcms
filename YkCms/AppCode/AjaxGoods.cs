@@ -37,6 +37,7 @@ namespace YkCms.AppCode
             ginfo.GoodsName = goodsname;
             ginfo.Unit = unit;
             ginfo.Price = decimal.Parse(price);
+            
             ginfo.Discount = disocout;
             ginfo.Count = count;
             ginfo.Image = image;

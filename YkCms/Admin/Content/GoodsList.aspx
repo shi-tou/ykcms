@@ -45,7 +45,7 @@
             <!--start 表单窗口-->
             <div id="goodsWin" class="easyui-window" title="添加产品" data-options="iconCls:'icon-save',modal:true,top:'20px',closed:true,minimizable:false,maximizable:false,collapsible:false" >
                 <form id="goodsForm">
-                <input id="sortlist-sortid" name="goodsid" type="hidden" />
+                <input id="goodsid" name="goodsid" type="hidden" />
                 <table class="table">
                     <tr>
                         <td style="width:100px;" class="r">产品类别:</td>

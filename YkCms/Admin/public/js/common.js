@@ -71,9 +71,9 @@ function formatRMB(num) {
     num = Math.floor(num / 100).toString();
     if (cents < 10)
         cents = "0" + cents;
-    for (var i = 0; i < Math.floor((num.length - (1 + i)) / 3); i++)
-        num = num.substring(0, num.length - (4 * i + 3)) + ',' +
-    num.substring(num.length - (4 * i + 3));
+//    for (var i = 0; i < Math.floor((num.length - (1 + i)) / 3); i++)
+//        num = num.substring(0, num.length - (4 * i + 3)) + ',' +
+//    num.substring(num.length - (4 * i + 3));
     return (((sign) ? '' : '-') + num + '.' + cents);
 }
 //对每一个请求的URL进行处理，确保每一次请求都是新的,
