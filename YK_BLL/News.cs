@@ -5,6 +5,7 @@ using YK.Common;
 using YK.Model;
 using YK.DALFactory;
 using YK.IDAL;
+using YK.DBUtility;
 namespace YK.BLL
 {
 	/// <summary>
@@ -195,6 +196,16 @@ namespace YK.BLL
 			return GetList("");
 		}
 
+        /// <summary>
+        /// 获得数据列表
+        /// </summary>
+        public DataTable GetNewsFroJoin(string sqlWhere)
+        {
+            string sql = "select * from v_NewsForJoin ";//查询视图
+            if (sqlWhere != "")
+                sql += " where " + sqlWhere;
+            return DbHelperSQL.Query(sql).Tables[0];
+        }
 		/// <summary>
 		/// 分页获取数据列表
 		/// </summary>

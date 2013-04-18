@@ -206,10 +206,10 @@ namespace YkCms.ajax
                     #endregion
 
                     #region 新闻管理
-                    ////获取新闻类别列表
-                    //case "GetNewsTypeList":
-                    //    new AjaxNews().GetNewsTypeList();
-                    //    break;
+                    //获取新闻类别列表
+                    case "getNewsList":
+                        new AjaxNews().GetNewsList();
+                        break;
                     ////添加新闻类别
                     //case "AddNewsTypeModel":
                     //    new AjaxNews().AddNewsTypeModel();

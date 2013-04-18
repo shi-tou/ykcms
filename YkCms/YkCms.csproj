@@ -48,12 +48,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\Content\GoodsList.aspx" />
+    <Content Include="Admin\Content\NewsList.aspx" />
     <Content Include="Admin\public\ajax\ValidateImage.aspx" />
     <Content Include="Admin\public\css\admin.css" />
     <Content Include="Admin\public\css\login.css" />
     <Content Include="Admin\public\images\btn_upload.gif" />
     <Content Include="Admin\public\js\AjaxCommon.js" />
     <Content Include="Admin\public\js\base64.js" />
+    <Content Include="Admin\public\js\news.js" />
     <Content Include="Admin\public\js\customValidate.js" />
     <Content Include="Admin\public\js\admin.js" />
     <Content Include="Admin\index.aspx" />
@@ -1492,6 +1494,13 @@
     <Compile Include="Admin\Content\GoodsList.aspx.designer.cs">
       <DependentUpon>GoodsList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Content\NewsList.aspx.cs">
+      <DependentUpon>NewsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Content\NewsList.aspx.designer.cs">
+      <DependentUpon>NewsList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\public\ajax\ajax.ashx.cs">
       <DependentUpon>ajax.ashx</DependentUpon>
     </Compile>
@@ -1616,6 +1625,7 @@
     <Compile Include="AppCode\AjaxAdmin.cs" />
     <Compile Include="AppCode\AjaxGoods.cs" />
     <Compile Include="AppCode\AjaxMsg.cs" />
+    <Compile Include="AppCode\AjaxNews.cs" />
     <Compile Include="AppCode\Function.cs" />
     <Compile Include="AppCode\AjaxGroup.cs" />
     <Compile Include="AppCode\AjaxSyslog.cs" />

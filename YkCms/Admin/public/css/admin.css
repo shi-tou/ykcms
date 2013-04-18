@@ -60,3 +60,6 @@ templateWin0{width:800px;}
 #goodsWin dl{padding-left:14px; }
 #goodsWin dt{float:left;padding:12px 0 4px;width:100px; text-align:right; margin:0px;}
 #goodsWin dd{text-align:left;height:auto;padding:8px 0;margin-left:5px; }
+/*新闻*/
+#newsWin{width:800px;}
+#content{ width:450px; height:300px;}
