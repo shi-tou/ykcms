@@ -19,6 +19,7 @@
 .l{text-align:left;}
 .r{text-align:right;}
 .table{ font-size:12px;border:0px; margin-top:20px; line-height:25px; padding:0px 3px;}
+.searchtable{ font-size:12px;}
 /*权限组*/
 #groupWin{width: 450px; height: auto; padding: 10px;}
 #groupForm dl{padding-left:14px;}
@@ -63,3 +64,6 @@ templateWin0{width:800px;}
 /*新闻*/
 #newsWin{width:800px;}
 #content{ width:450px; height:300px;}
+/*配置*/
+.configtable{ font-size:12px; line-height:30px; padding:0px 5px; width:100%}
+.configtable textarea{ width:450px; height:50; line-height:20px;}

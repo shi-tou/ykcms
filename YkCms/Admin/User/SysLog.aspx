@@ -22,7 +22,7 @@
         <div class="main">
             <!--start 搜索-->
             <div class="easyui-panel search" title="条件搜索" data-options="iconCls:'icon-search'">
-                <table>
+                <table class="searchtable">
                     <tr>
                         <td>关键字：</td>
                         <td><input id="search-syslog-key" name="search-syslog-key" class="tb" /></td>

@@ -24,7 +24,7 @@
         <div class="main">
             <!--start 搜索-->
             <div class="easyui-panel search" title="条件搜索">
-                <table>
+                <table class="searchtable">
                     <tr>
                         <td>类别：</td>
                         <td><select id="searchtypeid"><%=SortSelectHtml %></select></td>
@@ -42,7 +42,7 @@
             <table id="goodsList">
 	        </table>
             <!--end 列表-->
-            <!--start 表单窗口-->
+            <!--start 添加产品表单窗口-->
             <div id="goodsWin" class="easyui-window" title="添加产品" data-options="iconCls:'icon-save',modal:true,top:'20px',closed:true,minimizable:false,maximizable:false,collapsible:false" >
                 <form id="goodsForm">
                 <input id="goodsid" name="goodsid" type="hidden" />

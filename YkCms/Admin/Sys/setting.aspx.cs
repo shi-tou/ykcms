@@ -25,7 +25,6 @@ namespace YkCms.Sys
             else
                 this.rd_StateClose.Checked = true;
             this.tb_SiteName.Text = ginfo.SiteName;
-            this.tb_SiteUrl.Text = ginfo.SiteUrl;
             this.tb_SiteTitle.Text = ginfo.SiteTitle;
             this.tb_SiteKeywords.Text = ginfo.SiteKeywords;
             this.tb_SiteDescription.Text = ginfo.SiteDescription;
@@ -39,7 +38,6 @@ namespace YkCms.Sys
             GlobalConfigInfo ginfo = GlobalConfig.GetConfig();
             ginfo.SiteState = this.rd_StateOpen.Checked ? 0 : 1;
             ginfo.SiteName = this.tb_SiteName.Text;
-            ginfo.SiteUrl = this.tb_SiteName.Text;
             ginfo.SiteTitle = this.tb_SiteTitle.Text;
             ginfo.SiteKeywords = this.tb_SiteKeywords.Text;
             ginfo.SiteDescription = this.tb_SiteDescription.Text;

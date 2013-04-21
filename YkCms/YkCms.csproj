@@ -55,6 +55,8 @@
     <Content Include="Admin\public\images\btn_upload.gif" />
     <Content Include="Admin\public\js\AjaxCommon.js" />
     <Content Include="Admin\public\js\base64.js" />
+    <Content Include="Admin\public\js\config.js" />
+    <Content Include="Admin\public\js\dictionary.js" />
     <Content Include="Admin\public\js\news.js" />
     <Content Include="Admin\public\js\customValidate.js" />
     <Content Include="Admin\public\js\admin.js" />
@@ -73,6 +75,8 @@
     <Content Include="Admin\Sort\SortAttributeList.aspx" />
     <Content Include="Admin\Sort\SortList.aspx" />
     <Content Include="Admin\Sort\TemplateList.aspx" />
+    <Content Include="Admin\Sys\Config.aspx" />
+    <Content Include="Admin\Sys\Dictionary.aspx" />
     <Content Include="Admin\Sys\setting.aspx" />
     <Content Include="Admin\User\SysLog.aspx" />
     <Content Include="Admin\User\AccountInfo.aspx" />
@@ -1008,6 +1012,7 @@
     <Content Include="Admin\public\uploadify\uploadify.allglyphs.swf" />
     <Content Include="Admin\public\uploadify\uploadify.css" />
     <Content Include="Admin\public\uploadify\uploadify.swf" />
+    <Content Include="Global.asax" />
     <Content Include="jquery-easyui-1.3.2\changelog.txt" />
     <Content Include="jquery-easyui-1.3.2\demo\accordion\actions.html" />
     <Content Include="jquery-easyui-1.3.2\demo\accordion\ajax.html" />
@@ -1549,6 +1554,20 @@
     <Compile Include="Admin\Sort\TemplateList.aspx.designer.cs">
       <DependentUpon>TemplateList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Sys\Config.aspx.cs">
+      <DependentUpon>Config.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Sys\Config.aspx.designer.cs">
+      <DependentUpon>Config.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Sys\Dictionary.aspx.cs">
+      <DependentUpon>Dictionary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Sys\Dictionary.aspx.designer.cs">
+      <DependentUpon>Dictionary.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Sys\setting.aspx.cs">
       <DependentUpon>setting.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1623,9 +1642,11 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AppCode\AjaxAdmin.cs" />
+    <Compile Include="AppCode\AjaxDictionary.cs" />
     <Compile Include="AppCode\AjaxGoods.cs" />
     <Compile Include="AppCode\AjaxMsg.cs" />
     <Compile Include="AppCode\AjaxNews.cs" />
+    <Compile Include="AppCode\AjaxConfig.cs" />
     <Compile Include="AppCode\Function.cs" />
     <Compile Include="AppCode\AjaxGroup.cs" />
     <Compile Include="AppCode\AjaxSyslog.cs" />
@@ -1638,6 +1659,9 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1697,6 +1721,10 @@
     <None Include="Admin\public\uploadify\check.php" />
     <None Include="Admin\public\uploadify\uploadify.fla" />
     <None Include="Admin\public\uploadify\uploadify.php" />
+    <Content Include="config\global.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="config\WaterImage.config" />
     <None Include="jquery-easyui-1.3.2\demo\accordion\datagrid_data1.json" />
     <None Include="jquery-easyui-1.3.2\demo\combobox\combobox_data1.json" />
     <None Include="jquery-easyui-1.3.2\demo\combogrid\datagrid_data1.json" />

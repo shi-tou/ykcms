@@ -147,7 +147,7 @@ function add(type) {
             title = "全局参数配置";
             if (isTabExist(title))
                 return;
-            addTab(title, "Sys/GlobalSetting.aspx", true)
+            addTab(title, "Sys/Config.aspx", true)
             break;
         case "QQ":
             title = "网站客服配置";

@@ -20,7 +20,7 @@
         <div class="main">
             <!--start 搜索-->
             <div class="easyui-panel search" title="条件搜索">
-                <table>
+                <table class="searchtable">
                     <tr>
                         <td>管理员姓名：</td>
                         <td><input id="search-adminlist-adminname" name="search-adminlist-adminname" class="tb" /></td>

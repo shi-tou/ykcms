@@ -5,6 +5,8 @@ using System.Xml;
 using YK.Model;
 using System.Web.Security;
 using System.Text;
+using YK.Config;
+using YK.Common;
 
 namespace YkCms.AppCode
 {
@@ -62,6 +64,38 @@ namespace YkCms.AppCode
         public static void DeleteCookieAdmin()
         {
             HttpContext.Current.Session.Remove("AdminAccount");
+        }
+        #endregion
+
+        #region 读取和保存Cookie中的配置信息
+        /// <summary>
+        /// 将当前登陆对象序列化为XML字符串
+        /// </summary>
+        public static GlobalConfigInfo GetGlobalConfig()
+        {
+            GlobalConfigInfo ginfo = new GlobalConfigInfo();
+            string configStr = HttpContext.Current.Request.Cookies["GlobalConfig"] != null ? HttpContext.Current.Request.Cookies["GlobalConfig"].ToString() : "";
+            if (configStr == "")
+            {
+                StringBuilder sbAdmin = new StringBuilder();
+                ginfo = GlobalConfig.GetConfig();
+                sbAdmin.AppendFormat(SerializationHelper.Serialize(ginfo));
+                HttpCookie cookie = new HttpCookie("GlobalConfig");
+                cookie.Value = sbAdmin.ToString();
+            }
+            else
+            {
+                ginfo = SerializationHelper.DeSerialize(typeof(GlobalConfigInfo), configStr) as GlobalConfigInfo;
+            }
+            return ginfo;
+        }
+        
+        /// <summary>
+        /// 删除配置Cookie
+        /// </summary>
+        public static void DeleteCookieConfig()
+        {
+            HttpContext.Current.Request.Cookies.Remove("GlobalConfig");
         }
         #endregion
         /// <summary>

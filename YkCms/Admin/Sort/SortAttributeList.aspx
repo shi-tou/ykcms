@@ -21,7 +21,7 @@
         <div class="main">
             <!--start 搜索-->
             <div class="easyui-panel search" title="条件搜索">
-                <table>
+                <table class="searchtable">
                     <tr>
                         <td>栏目属性名称：</td>
                         <td><input id="search-sortattribute-sortattributename" name="search-sortattribute-sortattributename" class="tb" /></td>

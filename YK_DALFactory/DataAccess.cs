@@ -7,7 +7,6 @@ namespace YK.DALFactory
     /// <summary>
     /// 抽象工厂模式创建DAL。
     /// web.config 需要加入配置：(利用工厂模式+反射机制+缓存机制,实现动态创建不同的数据层对象接口)  
-    /// DataCache类在导出代码的文件夹里
     /// <appSettings>  
     /// <add key="DAL" value="YK.OleDbDAL" /> (这里的命名空间根据实际情况更改为自己项目的命名空间)
     /// </appSettings> 
@@ -97,6 +96,13 @@ namespace YK.DALFactory
             string ClassNamespace = AssemblyPath + ".News";
             object objType = CreateObject(AssemblyPath, ClassNamespace);
             return (YK.IDAL.INews)objType;
+        }
+
+        public static IDAL.IDictionary CreateDictionary()
+        {
+            string ClassNamespace = AssemblyPath + ".Dictionary";
+            object objType = CreateObject(AssemblyPath, ClassNamespace);
+            return (YK.IDAL.IDictionary)objType;
         }
     }
 }

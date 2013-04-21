@@ -23,7 +23,7 @@
         <div class="main">
             <!--start 搜索-->
             <div class="easyui-panel search" title="条件搜索">
-                <table>
+                <table class="searchtable">
                     <tr>
                         <td>模板名称：</td>
                         <td><input id="search-templatelist-templatename" name="search-templatelist-templatename" class="tb" /></td>

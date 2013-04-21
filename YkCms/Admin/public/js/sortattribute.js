@@ -149,7 +149,7 @@ function deleteSortAttribute() {
         });
     }
     else {
-        alert('请选择要删除的记录！');
+        alertInfo('操作提示','请选择要删除的记录！');       
     }
 }
 //查询栏目属性

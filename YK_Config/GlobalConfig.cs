@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using YK.Common;
+using System.IO;
 
 namespace YK.Config
 {
@@ -19,6 +20,10 @@ namespace YK.Config
         /// </summary>
         private static System.Timers.Timer generalConfigTimer = new System.Timers.Timer(15000);
         /// <summary>
+        /// 文件修改时间
+        /// </summary>
+        private static DateTime _fileoldchange;
+        /// <summary>
         /// 网站信息设置类对象
         /// </summary>
         private static GlobalConfigInfo _configinfo;
@@ -27,8 +32,18 @@ namespace YK.Config
         /// </summary>
         static GlobalConfig()
         {
-            _configinfo = GlobalBaseConfigFileManager.LoadConfig();
-
+            _fileoldchange = System.IO.File.GetLastWriteTime(ConfigFilePath);
+            try
+            {
+                _configinfo = (GlobalConfigInfo)BaseConfigFileManager.DeserializeInfo(ConfigFilePath, typeof(GlobalConfigInfo));
+            }
+            catch
+            {
+                if (File.Exists(ConfigFilePath))
+                {
+                    _configinfo = (GlobalConfigInfo)BaseConfigFileManager.DeserializeInfo(ConfigFilePath, typeof(GlobalConfigInfo));
+                }
+            }
             generalConfigTimer.AutoReset = true;
             generalConfigTimer.Enabled = true;
             generalConfigTimer.Elapsed += new System.Timers.ElapsedEventHandler(Timer_Elapsed);
@@ -39,31 +54,74 @@ namespace YK.Config
         {
             ResetConfig();
         }
+        /// <summary>
+        /// 当前配置类的实例
+        /// </summary>
+        public static IConfigInfo ConfigInfo
+        {
+            get { return _configinfo; }
+            set { _configinfo = (GlobalConfigInfo)value; }
+        }
+        /// <summary>
+        /// 配置文件所在路径
+        /// </summary>
+        public static string filename = null;
+        /// <summary>
+        /// 获取配置文件所在路径
+        /// </summary>
+        public static string ConfigFilePath
+        {
+            get
+            {
+                if (filename == null)
+                {
+                    filename = Utils.GetMapPath(@"/config/global.config");
+                }
 
+                return filename;
+            }
+        }
         /// <summary>
         /// 重设配置类实例
         /// </summary>
         public static void ResetConfig()
         {
-            _configinfo = GlobalBaseConfigFileManager.LoadConfig();
+            _configinfo = LoadConfig();
         }
-
+        /// <summary>
+        /// 获取配置类对象
+        /// </summary>
+        /// <returns></returns>
         public static GlobalConfigInfo GetConfig()
         {
             return _configinfo;
-        }
+        }        
 
+        /// <summary>
+        /// 返回配置类实例
+        /// </summary>
+        /// <returns></returns>
+        public static GlobalConfigInfo LoadConfig()
+        {
+            try
+            {
+                ConfigInfo = BaseConfigFileManager.LoadConfig(ref _fileoldchange, ConfigFilePath, ConfigInfo, true);
+            }
+            catch
+            {
+                ConfigInfo = BaseConfigFileManager.LoadConfig(ref _fileoldchange, ConfigFilePath, ConfigInfo, true);
+            }
+            return ConfigInfo as GlobalConfigInfo;
+        }
         /// <summary>
         /// 保存配置类实例
         /// </summary>
-        /// <param name="generalconfiginfo"></param>
         /// <returns></returns>
         public static bool SaveConfig(GlobalConfigInfo generalconfiginfo)
         {
-            GlobalBaseConfigFileManager gcf = new GlobalBaseConfigFileManager();
-            GlobalBaseConfigFileManager.ConfigInfo = generalconfiginfo;
-            return gcf.SaveConfig();
+            return BaseConfigFileManager.SaveConfig(ConfigFilePath, ConfigInfo);
         }
+
 
         #region Helper
 

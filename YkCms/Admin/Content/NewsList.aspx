@@ -26,7 +26,7 @@
     <div class="main">
             <!--start 搜索-->
             <div class="easyui-panel search" title="条件搜索">
-                <table>
+                <table class="searchtable">
                     <tr>
                         <td>类别：</td>
                         <td><select id="searchtypeid"><%=SortSelectHtml %></select></td>

@@ -21,7 +21,7 @@
         <div class="main">
             <!--start 搜索-->
             <div class="easyui-panel search" title="条件搜索">
-                <table style=" line-height:">
+                <table class="searchtable">
                     <tr>
                         <td>权限名称：</td>
                         <td><input id="search-admingroup-groupname" name="search-admingroup-groupname" class="tb" /></td>

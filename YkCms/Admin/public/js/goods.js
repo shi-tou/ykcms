@@ -72,10 +72,10 @@ function getGoodsList() {
         columns: [[
             { field: 'GoodsID', width: 30, align: '', checkbox: true },
             { field: 'GoodsName', title: '产品名称', width: 150, align: 'center' },
-            { field: 'GoodsUnit', title: '单位', width: 50, align: 'center' },
+            { field: 'Unit', title: '单位', width: 50, align: 'center' },
             { field: 'SortName', title: '类别', width: 60, align: 'center' },
-            { field: 'Price', title: '单价', width: 100, align: 'center', formatter: formatMoney },
-            { field: 'Discount', title: '折扣', width: 100, align: 'center' },
+            { field: 'Price', title: '单价(元)', width: 100, align: 'center', formatter: formatMoney },
+            { field: 'Discount', title: '折扣(%)', width: 100, align: 'center' },
             { field: 'Count', title: '数量', width: 80, align: 'center' },
             { field: 'Describe', title: '描述', width: 150, align: 'center' },
             { field: 'AdminName', title: '创建人', width: 100, align: 'center' },
@@ -89,7 +89,7 @@ function getGoodsList() {
 }
 //格式化权限组名
 function formatMoney(val, row) {
-    return formatRMB(val);
+    return '<span style="color:red">'+ formatRMB(val) + '</span>';
 }
 //清空产品表单
 function clearGoodsForm() {

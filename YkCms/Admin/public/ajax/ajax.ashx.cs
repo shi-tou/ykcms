@@ -32,6 +32,15 @@ namespace YkCms.ajax
                         break;
                     #endregion
 
+                    #region 配置管理
+                    case "getGlobalConfig":
+                        new AjaxConfig().GetGlobalConfig();
+                        break;
+                    case "saveGlobalConfig":
+                        new AjaxConfig().SaveGlobalConfig();
+                        break;
+                    #endregion
+
                     #region 权限组
                     //检查权限组名称是否重复
                     case "checkGroupName":

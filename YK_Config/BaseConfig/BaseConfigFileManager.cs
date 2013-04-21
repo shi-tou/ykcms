@@ -52,7 +52,7 @@ namespace YK.Config
         /// <param name="configFilePath">配置文件所在路径</param>
         /// <param name="configinfo">相应的变量 注:该参数主要用于设置m_configinfo变量 和 获取类型.GetType()</param>
         /// <returns></returns>
-        protected static IConfigInfo LoadConfig(ref DateTime fileoldchange, string configFilePath, IConfigInfo configinfo)
+        public static IConfigInfo LoadConfig(ref DateTime fileoldchange, string configFilePath, IConfigInfo configinfo)
         {
             return LoadConfig(ref fileoldchange, configFilePath, configinfo, true);
         }
@@ -66,7 +66,7 @@ namespace YK.Config
         /// <param name="configinfo">相应的变量 注:该参数主要用于设置m_configinfo变量 和 获取类型.GetType()</param>
         /// <param name="checkTime">是否检查并更新传递进来的"文件加载时间"变量</param>
         /// <returns></returns>
-        protected static IConfigInfo LoadConfig(ref DateTime fileoldchange, string configFilePath, IConfigInfo configinfo, bool checkTime)
+        public static IConfigInfo LoadConfig(ref DateTime fileoldchange, string configFilePath, IConfigInfo configinfo, bool checkTime)
         {
             lock (_lockHelper)
             {
@@ -118,7 +118,7 @@ namespace YK.Config
         /// <param name="configFilePath">指定的配置文件所在的路径(包括文件名)</param>
         /// <param name="configinfo">被保存(序列化)的对象</param>
         /// <returns></returns>
-        public bool SaveConfig(string configFilePath, IConfigInfo configinfo)
+        public static bool SaveConfig(string configFilePath, IConfigInfo configinfo)
         {
             return SerializationHelper.Save(configinfo, configFilePath);
         }
